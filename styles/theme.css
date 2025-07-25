@@ -1,0 +1,139 @@
+:root {
+  /* colors */
+  --white: oklch(1 0 0);
+  --black: oklch(0 0 0);
+  --blue: oklch(0.7031 0.1618 249.75);
+  --green: oklch(0.7038 0.1622 158.75);
+  --grey: oklch(0.8452 0 0);
+  --dark-grey: oklch(0.683 0 0);
+  --orange: oklch(0.7034 0.1619 61.85);
+  --yellow: oklch(0.8266 0.1437 91.01);
+  --pink: oklch(0.7031 0.1612 0.1);
+  --purple: oklch(0.7024 0.1619 284.22);
+  --red: oklch(0.7025 0.1624 17.61);
+
+  /* borders */
+  --border-primary: oklch(0 0 0 / 5%);
+  --border-secondary: oklch(0 0 0 / 10%);
+  --border-tertiary: oklch(0 0 0 / 12.5%);
+  --border-quaternary: oklch(0 0 0 / 15%);
+
+  /* text */
+  --text-primary: oklch(0.22213 0 0);
+  --text-secondary: oklch(0.30557 0 0);
+  --text-tertiary: oklch(0.47421 0 0);
+  --text-quaternary: oklch(0.6901 0 0);
+
+  /* accents */
+  --accent-primary: oklch(0.701 0.1627 250.14);
+
+  /* backgrounds */
+  --background-primary: oklch(1 0 0);
+  --background-secondary: oklch(0.9821 0 0);
+
+  /* panel */
+  --panel-text-primary: oklch(1 0 0);
+  --panel-text-secondary: oklch(1 0 0 / 80%);
+  --panel-text-tertiary: oklch(1 0 0 / 60%);
+  --panel-text-quaternary: oklch(1 0 0 / 40%);
+  --panel-background: oklch(0.21 0 0);
+  --panel-background-secondary: oklch(0.21 0 0 / 80%);
+  --panel-border: oklch(1 0 0 / 5%);
+  --panel-hover: oklch(1 0 0 / 5%);
+
+  /* font */
+  --font-size-micro: 11px;
+  --font-size-mini: 12px;
+  --font-size-small: 13px;
+  --font-size-regular: 14px;
+  --font-size-large: 18px;
+  --font-size-title1: 36px;
+  --font-size-title2: 24px;
+  --font-size-title3: 20px;
+
+  /* font weight */
+  --font-weight-300: "wght" 300, "opsz" 14;
+  --font-weight-400: "wght" 400, "opsz" 14;
+  --font-weight-450: "wght" 450, "opsz" 14;
+  --font-weight-500: "wght" 500, "opsz" 14;
+  --font-weight-600: "wght" 600, "opsz" 14;
+  --font-weight-700: "wght" 700, "opsz" 14;
+
+  /* eases */
+  --ease-in-quad: cubic-bezier(0.55, 0.085, 0.68, 0.53);
+  --ease-in-cubic: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+  --ease-in-quart: cubic-bezier(0.895, 0.03, 0.685, 0.22);
+  --ease-in-quint: cubic-bezier(0.755, 0.05, 0.855, 0.06);
+  --ease-in-expo: cubic-bezier(0.95, 0.05, 0.795, 0.035);
+  --ease-in-circ: cubic-bezier(0.6, 0.04, 0.98, 0.335);
+  --ease-out-quad: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --ease-out-cubic: cubic-bezier(0.215, 0.61, 0.355, 1);
+  --ease-out-quart: cubic-bezier(0.165, 0.84, 0.44, 1);
+  --ease-out-quint: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-out-expo: cubic-bezier(0.19, 1, 0.22, 1);
+  --ease-out-circ: cubic-bezier(0.075, 0.82, 0.165, 1);
+  --ease-in-out-quad: cubic-bezier(0.455, 0.03, 0.515, 0.955);
+  --ease-in-out-cubic: cubic-bezier(0.645, 0.045, 0.355, 1);
+  --ease-in-out-quart: cubic-bezier(0.77, 0, 0.175, 1);
+  --ease-in-out-quint: cubic-bezier(0.86, 0, 0.07, 1);
+  --ease-in-out-expo: cubic-bezier(1, 0, 0, 1);
+  --ease-in-out-circ: cubic-bezier(0.785, 0.135, 0.15, 0.86);
+
+  /* durations */
+  --duration-quick: 0.1s;
+  --duration-regular: 0.18s;
+  --duration-slow: 0.35s;
+
+  /* shadows */
+  --shadow-dropdown:
+    oklch(0 0 0 / 0.02) 0px 6px 18px, oklch(0 0 0 / 0.04) 0px 3px 9px,
+    oklch(0 0 0 / 0.04) 0px 1px 1px;
+  --panel-dropdown:
+    oklch(0 0 0 / 10%) 0px 4px 4px -2px, oklch(0 0 0 / 10%) 0px 6px 6px -3px, oklch(
+      0 0 0 /
+      10%
+    ) 0px 8px 8px -4px, oklch(0 0 0) 0px 0px 0px 0.5px;
+
+  /* spacing */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 12px;
+  --spacing-lg: 16px;
+  --spacing-xl: 24px;
+  --spacing-2xl: 32px;
+  --spacing-3xl: 48px;
+  --spacing-4xl: 64px;
+  --spacing-5xl: 96px;
+
+  /* border radius */
+  --radius-xs: 2px;
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-2xl: 24px;
+  --radius-full: 100px;
+
+  /* layout */
+  --container-width: 1152px;
+  --player-width: 928px;
+  --panel-width: 200px;
+  --controls-height: 48px;
+  --caption-max-width: 800px;
+
+  /* semantic colors */
+  --color-primary: var(--accent-primary);
+  --color-primary-hover: oklch(0.651 0.1627 250.14);
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-tertiary: var(--text-tertiary);
+  --color-text-inverse: var(--white);
+  --color-background-primary: var(--background-primary);
+  --color-background-secondary: var(--background-secondary);
+  --color-background-tertiary: oklch(0.9641 0 0);
+  --color-border: var(--border-primary);
+  --color-border-hover: var(--border-secondary);
+  --color-success: var(--green);
+  --color-error: var(--red);
+  --color-warning: var(--yellow);
+}
