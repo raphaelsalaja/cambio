@@ -17,7 +17,6 @@ export default async function Page() {
       <h1>{title}</h1>
       {description && <p>{description}</p>}
       {publishedAt && <time>{publishedAt}</time>}
-
       <article>
         <MDX components={getMDXComponents()} />
       </article>

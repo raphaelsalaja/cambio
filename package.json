@@ -10,9 +10,11 @@
     "postinstall": "fumadocs-mdx"
   },
   "dependencies": {
+    "@base-ui-components/react": "1.0.0-beta.1",
     "@types/mdx": "^2.0.13",
     "fumadocs-core": "^15.6.5",
     "fumadocs-mdx": "^11.7.0",
+    "motion": "^12.23.9",
     "next": "15.4.4",
     "react": "19.1.0",
     "react-dom": "19.1.0",
