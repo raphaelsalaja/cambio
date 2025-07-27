@@ -1,29 +1,93 @@
 @import url("./reset.css");
 @import url("./theme.css");
+@import url("./article.css");
 
 html {
   overflow-x: hidden;
   color: var(--text-primary);
-}
+  background: oklch(0.9938 0.0013 106.42);
 
-html::-webkit-scrollbar {
-  width: 0;
-  background: transparent;
+  &::-webkit-scrollbar {
+    width: 0;
+    background: transparent;
+  }
 }
 
 body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 0;
-  margin: 0;
+
+  main {
+    max-width: 640px;
+    padding: 5rem 1rem 2.5rem;
+    margin: 0 auto;
+    isolation: isolate;
+    transition: width 0.4s ease;
+
+    &[data-animate] {
+      animation: blur-in 1s ease forwards;
+    }
+
+    @media (width <= 800px) {
+      width: 80%;
+    }
+
+    &::before {
+      position: fixed;
+      top: 0;
+      right: 0;
+      left: 0;
+      z-index: 9;
+      height: 8rem;
+      pointer-events: none;
+      content: "";
+      background: linear-gradient(
+        180deg,
+        #fff 0,
+        hsla(0, 0%, 100%, 0.738) 19%,
+        hsla(0, 0%, 100%, 0.541) 34%,
+        hsla(0, 0%, 100%, 0.382) 47%,
+        hsla(0, 0%, 100%, 0.278) 56.5%,
+        hsla(0, 0%, 100%, 0.194) 65%,
+        hsla(0, 0%, 100%, 0.126) 73%,
+        hsla(0, 0%, 100%, 0.075) 80.2%,
+        hsla(0, 0%, 100%, 0.042) 86.1%,
+        hsla(0, 0%, 100%, 0.021) 91%,
+        hsla(0, 0%, 100%, 0.008) 95.2%,
+        hsla(0, 0%, 100%, 0.002) 98.2%,
+        hsla(0, 0%, 100%, 0)
+      );
+    }
+  }
 }
 
-main {
-  display: flex;
-  flex: 1 0 0;
-  flex-direction: column;
-  gap: 64px;
-  align-items: center;
-  width: 1152px;
+/* biome-ignore lint/correctness/noUnknownTypeSelector: view-transition */
+::view-transition-old(root) {
+  animation: blur-out 0.4s ease forwards;
+}
+
+/* biome-ignore lint/correctness/noUnknownTypeSelector: view-transition */
+::view-transition-new(root) {
+  animation: blur-in 0.4s ease forwards;
+}
+
+@keyframes blur-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes blur-out {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
 }

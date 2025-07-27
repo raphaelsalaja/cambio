@@ -1,4 +1,5 @@
 import localFont from "next/font/local";
+
 import "@/styles/main.css";
 
 const inter = localFont({
@@ -12,7 +13,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <main>{children}</main>
+      </body>
     </html>
   );
 }

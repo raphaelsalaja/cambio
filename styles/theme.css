@@ -20,9 +20,7 @@
 
   /* text */
   --text-primary: oklch(0.22213 0 0);
-  --text-secondary: oklch(0.30557 0 0);
-  --text-tertiary: oklch(0.47421 0 0);
-  --text-quaternary: oklch(0.6901 0 0);
+  --text-secondary: oklch(0.6901 0 0);
 
   /* accents */
   --accent-primary: oklch(0.701 0.1627 250.14);

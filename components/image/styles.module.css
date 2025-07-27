@@ -1,0 +1,26 @@
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  cursor: zoom-out;
+}
+
+.popup {
+  width: 60%;
+}
+
+.trigger {
+  position: relative;
+  width: 100%;
+  cursor: zoom-in;
+}
+
+.popup,
+.trigger {
+  z-index: 100000;
+  aspect-ratio: 3 / 2;
+  overflow: hidden;
+  border-radius: 4px;
+}
