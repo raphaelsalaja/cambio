@@ -14,7 +14,8 @@
       "!**/.next",
       "!**/.vercel",
       "!**/.pnpm",
-      "!**/*.svg"
+      "!**/*.svg",
+      "!**/lib/unicornStudio.umd.js"
     ]
   },
   "formatter": {
@@ -22,12 +23,19 @@
     "indentStyle": "space",
     "indentWidth": 2
   },
+
   "linter": {
     "enabled": true,
     "rules": {
       "recommended": true,
       "suspicious": {
         "noDuplicateProperties": "off"
+      },
+      "style": {
+        "noDescendingSpecificity": "off"
+      },
+      "a11y": {
+        "noSvgWithoutTitle": "off"
       }
     },
     "domains": {
