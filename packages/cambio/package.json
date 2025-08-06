@@ -23,6 +23,24 @@
     "node": ">=18"
   },
   "packageManager": "pnpm@9.5.0",
+  "keywords": [
+    "react",
+    "animation",
+    "motion",
+    "dialog",
+    "modal",
+    "popup",
+    "ui",
+    "components",
+    "base-ui",
+    "shared-layout",
+    "layout-animation",
+    "framer-motion",
+    "spring",
+    "transition",
+    "accessibility",
+    "a11y"
+  ],
   "files": [
     "dist"
   ],
