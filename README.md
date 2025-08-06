@@ -1,36 +1,89 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Cambio
 
-## Getting Started
+Cambio simplifies shared animations in React by removing the complexity that many developers face when setting up these interactions. By eliminating boilerplate code, it streamlines both implementation and maintenance workflows.
 
-First, run the development server:
+Built on [Base UI's](https://base-ui.com/) accessible primitives and [Motion's](https://motion.dev/) powerful animation library, Cambio ensures your animations are both performant and inclusive by default.
+
+# Installation
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+pnpm add cambio
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+# Usage
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+It can be used anywhere in your application as follows.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```tsx
+"use client";
 
-## Learn More
+import { Cambio } from "cambio";
 
-To learn more about Next.js, take a look at the following resources:
+export default function VaulDrawer() {
+  return (
+    <Cambio.Root>
+      <Cambio.Trigger>{/* Your Content */}</Cambio.Trigger>
+      <Cambio.Portal>
+        <Cambio.Backdrop />
+        <Cambio.Popup>{/* Your Content*/}</Cambio.Popup>
+      </Cambio.Portal>
+    </Cambio.Root>
+  );
+}
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+# Motion Integration
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Cambio leverages the power of [Motion](https://motion.dev/) to provide a seamless animation experience.
+For example you can easily add your own transitions by passing a `transition` prop to any of the components.
 
-## Deploy on Vercel
+This saves having to create a `<motion.div/>` for each component.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```tsx lineNumbers
+<Cambio.Popup transition={{ type: "spring", bounce: 0.2, duration: 0.4 }}>
+  {/* Your Content */}
+</Cambio.Popup>
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+# Support
+
+For any issues or feature requests, please open an issue on [GitHub](https://github.com/raphaelsalaja/cambio).
+
+You can also reach out to me on [Twitter](https://x.com/raphaelsalaja).
+
+```tsx
+"use client";
+
+import { Cambio } from "cambio";
+
+export default function VaulDrawer() {
+  return (
+    <Cambio.Root>
+      <Cambio.Trigger>{/* Your Content */}</Cambio.Trigger>
+      <Cambio.Portal>
+        <Cambio.Backdrop />
+        <Cambio.Popup>{/* Your Content*/}</Cambio.Popup>
+      </Cambio.Portal>
+    </Cambio.Root>
+  );
+}
+```
+
+# Motion Integration
+
+Cambio leverages the power of [Motion](https://motion.dev/) to provide a seamless animation experience.
+For example you can easily add your own transitions by passing a `transition` prop to any of the components.
+
+This saves having to create a `<motion.div/>` for each component.
+
+```tsx lineNumbers
+<Cambio.Popup transition={{ type: "spring", bounce: 0.2, duration: 0.4 }}>
+  {/* Your Content */}
+</Cambio.Popup>
+```
+
+# Support
+
+For any issues or feature requests, please open an issue on [GitHub](https://github.com/raphaelsalaja/cambio).
+
+You can also reach out to me on [Twitter](https://x.com/raphaelsalaja).

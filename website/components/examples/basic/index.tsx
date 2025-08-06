@@ -1,7 +1,7 @@
 "use client";
 
+import { Cambio } from "cambio";
 import Image from "next/image";
-import * as Cambio from "@/components/cambio";
 import styles from "./styles.module.css";
 
 export function Basic() {

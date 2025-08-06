@@ -1,0 +1,43 @@
+{
+  "name": "cambio",
+  "version": "0.0.1",
+  "main": "./dist/cjs/index.js",
+  "scripts": {
+    "dev": "bunchee -w",
+    "build": "bunchee prepare && bunchee",
+    "lint": "biome check --fix --unsafe . --verbose"
+  },
+  "dependencies": {
+    "@base-ui-components/react": "1.0.0-beta.2",
+    "@types/react": "^19.1.9",
+    "motion": "^12.23.12",
+    "react": "^19.1.1"
+  },
+  "devDependencies": {
+    "@changesets/cli": "^2.29.5",
+    "@tsconfig/next": "^2.0.3",
+    "bunchee": "^6.6.0",
+    "typescript": "5.8.3"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "packageManager": "pnpm@9.5.0",
+  "files": [
+    "dist"
+  ],
+  "module": "./dist/es/index.mjs",
+  "types": "./dist/cjs/index.d.ts",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/es/index.d.mts",
+        "default": "./dist/es/index.mjs"
+      },
+      "require": {
+        "types": "./dist/cjs/index.d.ts",
+        "default": "./dist/cjs/index.js"
+      }
+    }
+  }
+}
