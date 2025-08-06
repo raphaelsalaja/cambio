@@ -1,0 +1,5 @@
+---
+"cambio": minor
+---
+
+fix documentation
