@@ -6,6 +6,32 @@ const inter = localFont({
   src: "./fonts/inter/variable.ttf",
 });
 
+const openrunde = localFont({
+  variable: "--font-openrunde",
+  src: [
+    {
+      path: "./fonts/openrunde/regular.woff2",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "./fonts/openrunde/medium.woff2",
+      weight: "500",
+      style: "normal",
+    },
+    {
+      path: "./fonts/openrunde/semibold.woff2",
+      weight: "600",
+      style: "normal",
+    },
+    {
+      path: "./fonts/openrunde/bold.woff2",
+      weight: "700",
+      style: "normal",
+    },
+  ],
+});
+
 const mono = Roboto_Mono({
   subsets: ["latin"],
   variable: "--font-mono",
@@ -19,7 +45,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.className} ${mono.variable}`}>
+      <body
+        className={`${inter.className} ${mono.variable} ${openrunde.variable}`}
+      >
         <main>{children}</main>
       </body>
     </html>

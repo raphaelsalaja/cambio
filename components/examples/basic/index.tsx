@@ -1,38 +1,39 @@
 "use client";
 
-import NextImage from "next/image";
-import type React from "react";
+import Image from "next/image";
 import * as Cambio from "@/components/cambio";
 import styles from "./styles.module.css";
 
-interface ImageProps extends React.ImgHTMLAttributes<HTMLImageElement> {}
-
-export function Basic(props: ImageProps) {
-  const {
-    src = "https://cdn.cosmos.so/a567baf1-c791-4d9e-8e3e-35db6f41d9b2?format=jpeg",
-    alt = "",
-  } = props;
+export function Basic() {
+  const blurDataURL =
+    "data:image/jpeg;base64,/9j/2wBDABsSFBcUERsXFhceHBsgKEIrKCUlKFE6PTBCYFVlZF9VXVtqeJmBanGQc1tdhbWGkJ6jq62rZ4C8ybqmx5moq6T/2wBDARweHigjKE4rK06kbl1upKSkpKSkpKSkpKSkpKSkpKSkpKSkpKSkpKSkpKSkpKSkpKSkpKSkpKSkpKSkpKSkpKT/wAARCAAKAAoDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAAAQME/8QAFhABAQEAAAAAAAAAAAAAAAAAACIB/8QAFQEBAQAAAAAAAAAAAAAAAAAABAX/xAAVEQEBAAAAAAAAAAAAAAAAAAAAEv/aAAwDAQACEQMRAD8AzyJTwDKtP//Z";
 
   return (
     <Cambio.Root>
       <Cambio.Trigger className={styles.trigger}>
-        <NextImage
-          src={src}
-          alt={alt}
-          unoptimized
+        <Image
+          src={"/media/basic.jpg"}
+          alt={"Basic Example"}
           fill
-          style={{ objectFit: "cover" }}
+          style={{
+            objectFit: "cover",
+          }}
+          placeholder="blur"
+          blurDataURL={blurDataURL}
         />
       </Cambio.Trigger>
       <Cambio.Portal>
         <Cambio.Backdrop className={styles.backdrop} />
         <Cambio.Popup className={styles.popup}>
-          <NextImage
-            src={src}
-            alt={alt}
-            unoptimized
+          <Image
+            src={"/media/basic.jpg"}
+            alt={"Basic Example"}
             fill
-            style={{ objectFit: "cover" }}
+            style={{
+              objectFit: "cover",
+            }}
+            placeholder="blur"
+            blurDataURL={blurDataURL}
           />
         </Cambio.Popup>
       </Cambio.Portal>

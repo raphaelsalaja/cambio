@@ -17,7 +17,7 @@ export default async function Page() {
       <article>
         <header>
           <h1>{title}</h1>
-          <h2>{description}</h2>
+          <p>{description}</p>
         </header>
         <MDX components={getMDXComponents()} />
       </article>

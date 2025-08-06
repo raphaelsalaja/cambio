@@ -20,7 +20,9 @@
 
   /* text */
   --text-primary: oklch(0.22213 0 0);
-  --text-secondary: oklch(0.6901 0 0);
+  --text-secondary: oklch(0.30557 0 0);
+  --text-tertiary: oklch(0.47421 0 0);
+  --text-quaternary: oklch(0.6901 0 0);
 
   /* accents */
   --accent-primary: oklch(0.701 0.1627 250.14);
@@ -28,16 +30,6 @@
   /* backgrounds */
   --background-primary: oklch(1 0 0);
   --background-secondary: oklch(0.9821 0 0);
-
-  /* panel */
-  --panel-text-primary: oklch(1 0 0);
-  --panel-text-secondary: oklch(1 0 0 / 80%);
-  --panel-text-tertiary: oklch(1 0 0 / 60%);
-  --panel-text-quaternary: oklch(1 0 0 / 40%);
-  --panel-background: oklch(0.21 0 0);
-  --panel-background-secondary: oklch(0.21 0 0 / 80%);
-  --panel-border: oklch(1 0 0 / 5%);
-  --panel-hover: oklch(1 0 0 / 5%);
 
   /* font */
   --font-size-micro: 11px;
@@ -86,52 +78,4 @@
   --shadow-dropdown:
     oklch(0 0 0 / 0.02) 0px 6px 18px, oklch(0 0 0 / 0.04) 0px 3px 9px,
     oklch(0 0 0 / 0.04) 0px 1px 1px;
-  --panel-dropdown:
-    oklch(0 0 0 / 10%) 0px 4px 4px -2px, oklch(0 0 0 / 10%) 0px 6px 6px -3px, oklch(
-      0 0 0 /
-      10%
-    ) 0px 8px 8px -4px, oklch(0 0 0) 0px 0px 0px 0.5px;
-
-  /* spacing */
-  --spacing-xs: 4px;
-  --spacing-sm: 8px;
-  --spacing-md: 12px;
-  --spacing-lg: 16px;
-  --spacing-xl: 24px;
-  --spacing-2xl: 32px;
-  --spacing-3xl: 48px;
-  --spacing-4xl: 64px;
-  --spacing-5xl: 96px;
-
-  /* border radius */
-  --radius-xs: 2px;
-  --radius-sm: 4px;
-  --radius-md: 8px;
-  --radius-lg: 12px;
-  --radius-xl: 16px;
-  --radius-2xl: 24px;
-  --radius-full: 100px;
-
-  /* layout */
-  --container-width: 1152px;
-  --player-width: 928px;
-  --panel-width: 200px;
-  --controls-height: 48px;
-  --caption-max-width: 800px;
-
-  /* semantic colors */
-  --color-primary: var(--accent-primary);
-  --color-primary-hover: oklch(0.651 0.1627 250.14);
-  --color-text-primary: var(--text-primary);
-  --color-text-secondary: var(--text-secondary);
-  --color-text-tertiary: var(--text-tertiary);
-  --color-text-inverse: var(--white);
-  --color-background-primary: var(--background-primary);
-  --color-background-secondary: var(--background-secondary);
-  --color-background-tertiary: oklch(0.9641 0 0);
-  --color-border: var(--border-primary);
-  --color-border-hover: var(--border-secondary);
-  --color-success: var(--green);
-  --color-error: var(--red);
-  --color-warning: var(--yellow);
 }

@@ -54,7 +54,6 @@ export const Root = forwardRef<HTMLDivElement, CambioProps.Root>(
           {...dialogProps}
           open={isOpen}
           onOpenChange={handleOpenChange}
-          data-cambio-root
         >
           {children}
         </MotionDialog.Root>
@@ -67,14 +66,21 @@ export const Trigger = forwardRef<HTMLButtonElement, CambioProps.Trigger>(
   function Trigger(props, ref) {
     const { layoutId } = useCambioContext();
 
+    const {
+      transition = {
+        type: "spring",
+        bounce: 0.2,
+        duration: 0.4,
+      },
+    } = props;
+
     return (
       <MotionDialog.Trigger
         {...props}
         ref={ref}
         layoutId={layoutId}
-        key={`cambio-trigger-${layoutId}`}
-        data-cambio-trigger
-        // layoutCrossfade={false}
+        layoutCrossfade={false}
+        transition={transition}
       />
     );
   },
@@ -82,15 +88,19 @@ export const Trigger = forwardRef<HTMLButtonElement, CambioProps.Trigger>(
 
 export const Portal = forwardRef<HTMLDivElement, CambioProps.Portal>(
   function Portal(props, _ref) {
-    return (
-      <MotionDialog.Portal keepMounted={true} data-cambio-portal {...props} />
-    );
+    return <MotionDialog.Portal keepMounted={true} {...props} />;
   },
 );
 
 export const Backdrop = forwardRef<HTMLDivElement, CambioProps.Backdrop>(
   function Backdrop(props, ref) {
     const { layoutId, open } = useCambioContext();
+    const {
+      transition = { ease: [0.19, 1, 0.22, 1], duration: 0.4 },
+      initial = { opacity: 0 },
+      animate = { opacity: 1 },
+      exit = { opacity: 0 },
+    } = props;
 
     return (
       <AnimatePresence>
@@ -99,7 +109,10 @@ export const Backdrop = forwardRef<HTMLDivElement, CambioProps.Backdrop>(
             {...props}
             ref={ref}
             key={`cambio-backdrop-${layoutId}`}
-            data-cambio-backdrop
+            transition={transition}
+            initial={initial}
+            animate={animate}
+            exit={exit}
           />
         )}
       </AnimatePresence>
@@ -111,6 +124,14 @@ export const Popup = forwardRef<HTMLDivElement, CambioProps.Popup>(
   function Popup({ ...props }, ref) {
     const { layoutId, open } = useCambioContext();
 
+    const {
+      transition = {
+        type: "spring",
+        bounce: 0.2,
+        duration: 0.4,
+      },
+    } = props;
+
     return (
       <AnimatePresence>
         {open && (
@@ -118,17 +139,16 @@ export const Popup = forwardRef<HTMLDivElement, CambioProps.Popup>(
             {...props}
             ref={ref}
             layoutId={layoutId}
-            data-cambio-popup
-            transformTemplate={(_, generated) => {
-              return `translate(-50%, -50%) ${generated}`;
-            }}
-            // layoutCrossfade={false}
+            transformTemplate={(_, generated) =>
+              `translate(-50%, -50%) ${generated}`
+            }
+            transition={transition}
+            layoutCrossfade={false}
             style={{
               position: "fixed",
               top: "50%",
               left: "50%",
             }}
-            key={`cambio-popup-${layoutId}`}
           />
         )}
       </AnimatePresence>
@@ -138,7 +158,7 @@ export const Popup = forwardRef<HTMLDivElement, CambioProps.Popup>(
 
 export const Title = forwardRef<HTMLHeadingElement, CambioProps.Title>(
   function Title(props, ref) {
-    return <MotionDialog.Title ref={ref} data-cambio-title {...props} />;
+    return <MotionDialog.Title ref={ref} {...props} />;
   },
 );
 
@@ -146,13 +166,11 @@ export const Description = forwardRef<
   HTMLParagraphElement,
   CambioProps.Description
 >(function Description(props, ref) {
-  return (
-    <MotionDialog.Description ref={ref} data-cambio-description {...props} />
-  );
+  return <MotionDialog.Description ref={ref} {...props} />;
 });
 
 export const Close = forwardRef<HTMLButtonElement, CambioProps.Close>(
   function Close(props, ref) {
-    return <MotionDialog.Close ref={ref} data-cambio-close {...props} />;
+    return <MotionDialog.Close ref={ref} {...props} />;
   },
 );
