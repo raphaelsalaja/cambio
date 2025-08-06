@@ -2,7 +2,11 @@
   "mode": "pre",
   "tag": "beta",
   "initialVersions": {
-    "cambio": "0.0.0"
+    "cambio": "0.0.0",
+    "website": "0.0.1"
   },
-  "changesets": []
+  "changesets": [
+    "old-parts-ask",
+    "slimy-areas-design"
+  ]
 }
