@@ -1,16 +1,11 @@
 {
-  "name": "@rs/portfolio",
+  "name": "monorepo",
   "version": "2025.0.1",
   "scripts": {
     "dev": "turbo dev",
-    "dev:website": "turbo run dev --filter=website",
-    "dev:design": "turbo run dev --filter=@rs/design --filter=playground",
     "lint": "turbo lint",
-    "build": "turbo build",
-    "build:website": "turbo run build --filter=website",
-    "build:design": "turbo run build --filter=@rs/design --filter=playground",
-    "build:turbo": "turbo lint && turbo build && pnpm install",
-    "publish-packages": "turbo run build lint && changeset version && changeset publish"
+    "build": "turbo run build",
+    "start": "cd website && next start"
   },
   "devDependencies": {
     "@biomejs/biome": "2.1.2",
