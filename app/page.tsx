@@ -1,24 +1,14 @@
-import { OutlineProvider } from "@/components/outline/provider";
-import { source } from "@/lib/source";
+import { getHomePage } from "@/lib/fumadocs";
 import { getMDXComponents } from "@/mdx-components";
 
 export default async function Page() {
-  const page = source.getPage(["cambio"]);
+  const page = getHomePage();
 
   if (!page) {
     return <div>Not found</div>;
   }
 
-  const { title, publishedAt } = page.data;
-
-  const date = publishedAt
-    ? new Date(publishedAt).toLocaleDateString("en-US", {
-        day: "2-digit",
-        month: "short",
-        year: "numeric",
-      })
-    : null;
-
+  const { title } = page.data;
   const MDX = page.data.body;
 
   return (
@@ -26,11 +16,8 @@ export default async function Page() {
       <article>
         <header>
           <h1>{title}</h1>
-          <time>{date && <time>{date}</time>}</time>
         </header>
-        <OutlineProvider>
-          <MDX components={getMDXComponents()} />
-        </OutlineProvider>
+        <MDX components={getMDXComponents()} />
       </article>
     </div>
   );

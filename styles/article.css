@@ -2,12 +2,57 @@
 @import url("./theme.css");
 
 article {
+  text-wrap: pretty;
+
   * {
     position: relative;
     font-size: 14px;
-    font-variation-settings: var(--font-weight-450);
-    line-height: 24px;
+    font-variation-settings: var(--font-weight-400);
     color: var(--text-primary);
+  }
+
+  video {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin-top: 48px;
+    overflow: hidden;
+    background: var(--background-primary);
+    border: 1px solid var(--border-primary);
+    border-radius: 8px;
+  }
+
+  center {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 384px;
+    padding: 64;
+    margin-top: 48px;
+    overflow: visible;
+    background: var(--background-primary);
+    border: 1px solid var(--border-primary);
+    border-radius: 8px;
+
+    button {
+      margin-top: none;
+    }
+  }
+
+  video,
+  center + p {
+    margin-top: 48px;
+  }
+
+  header {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    padding-bottom: 12px;
   }
 
   h1 {
@@ -30,6 +75,10 @@ article {
 
   time {
     font-variation-settings: var(--font-weight-500);
+    color: var(--text-quaternary);
+  }
+
+  p {
     color: var(--text-secondary);
   }
 
@@ -41,18 +90,17 @@ article {
 
   p + p,
   h1 + h2,
-  h1 + time,
   h2 + h3 {
-    margin-top: 16px;
+    margin-top: 12px;
   }
 
   h1 + p,
   h2 + p,
   h3 + p,
   header + p,
-  /* if p is first child */
+  [data-stage] + p,
   p:first-child {
-    margin-top: 16px;
+    margin-top: 12px;
   }
 
   hr {
@@ -65,10 +113,10 @@ article {
     padding-left: 16px;
     margin: 24px 0;
     font-variation-settings: var(--font-weight-450);
-    border-left: 4px solid var(--border-primary);
+    border-left: 2px dashed var(--border-primary);
 
     p {
-      color: var(--text-secondary);
+      color: var(--text-quaternary);
     }
   }
 
@@ -76,13 +124,23 @@ article {
     margin-top: 24px;
   }
 
+  a {
+    color: var(--text-quaternary);
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-decoration-color: color-mix(in srgb, currentcolor 20%, transparent);
+    text-underline-offset: 2px;
+    cursor: pointer;
+    transition: color 0.2s ease;
+
+    &:hover {
+      color: var(--text-secondary);
+    }
+  }
+
   p + [data-rehype-pretty-code-figure],
   [data-rehype-pretty-code-figure] + p {
     margin-top: 24px;
-  }
-
-  [data-cambio-trigger] {
-    margin-top: 32;
   }
 
   [data-cambio-caption] {
@@ -91,7 +149,110 @@ article {
     font-size: 12px;
     font-variation-settings: var(--font-weight-500);
     line-height: 1.2;
-    color: var(--text-secondary);
+    color: var(--text-quaternary);
     text-align: center;
+  }
+
+  sub {
+    display: block;
+    width: 100%;
+    padding: 16px 32px 32px;
+    margin-top: 0px !important;
+    font-size: 12px;
+    font-variation-settings: var(--font-weight-500);
+    line-height: 24px;
+    color: var(--text-quaternary);
+    text-align: center;
+
+    p {
+      font: inherit;
+      color: inherit;
+    }
+  }
+
+  sup {
+    display: inline-block;
+    padding: 0 0 0 4px;
+    font-size: 10px;
+    font-variation-settings: var(--font-weight-500);
+    line-height: 1.5;
+    vertical-align: super;
+    color: var(--text-quaternary);
+
+    a {
+      font: inherit;
+      color: inherit;
+
+      &:hover {
+        color: var(--text-secondary);
+      }
+    }
+  }
+
+  [data-footnotes],
+  [data-support] {
+    margin-top: 64px;
+
+    &::before {
+      position: absolute;
+      top: -24px;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      content: "";
+      background: var(--border-primary);
+    }
+
+    a,
+    p,
+    h2,
+    h4,
+    ol,
+    li {
+      font-size: 12px;
+      font-variation-settings: var(--font-weight-450);
+      line-height: 20px;
+      color: var(--text-quaternary);
+      transition: all 0.2s ease;
+    }
+
+    a {
+      z-index: 2;
+      color: var(--text-quaternary);
+      text-decoration: underline;
+      text-decoration-thickness: 1px;
+      text-decoration-color: color-mix(in srgb, currentcolor 20%, transparent);
+      text-underline-offset: 2px;
+
+      cursor: pointer;
+
+      &:hover {
+        color: var(--text-secondary);
+      }
+    }
+
+    li {
+      margin-left: 10px;
+      counter-increment: list;
+    }
+
+    ol li:before {
+      position: absolute;
+      top: -2px;
+      left: -12px;
+      font-size: 10px;
+      font-variation-settings: var(--font-weight-500);
+      content: counter(list);
+    }
+
+    [data-footnote-backref] {
+      position: absolute;
+      inset: 0;
+      bottom: 8px;
+      z-index: 1;
+      display: inline-block;
+      overflow: hidden;
+      text-indent: -9999px;
+    }
   }
 }

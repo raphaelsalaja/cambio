@@ -1,0 +1,41 @@
+---
+title: "Documentation"
+description: "Documentation for using Cambio"
+publishedAt: "2025-07-27"
+---
+
+# Installation
+
+<Tabs />
+
+# Usage
+
+Can be used anywhere in your application as follows.
+
+```tsx lineNumbers title="app/page.tsx"
+"use client";
+
+import { Cambio } from "cambio";
+
+export default function VaulDrawer() {
+  return (
+    <Cambio.Root>
+      <Cambio.Trigger className={styles.trigger}>
+        {/* Your Content*/}
+      </Cambio.Trigger>
+      <Cambio.Portal>
+        <Cambio.Backdrop className={styles.backdrop} />
+        <Cambio.Popup className={styles.popup}>
+          {/* Your Content*/}
+        </Cambio.Popup>
+      </Cambio.Portal>
+    </Cambio.Root>
+  );
+}
+```
+
+# Default
+
+<center>
+  <Basic />
+</center>

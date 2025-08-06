@@ -1,10 +1,13 @@
 @import url("./reset.css");
 @import url("./theme.css");
 @import url("./article.css");
+@import url("./shiki.css");
 
 html {
   overflow-x: hidden;
   color: var(--text-primary);
+  scrollbar-color: oklch(0 0 0 / 5%) transparent;
+  scrollbar-width: thin;
   background: oklch(0.9938 0.0013 106.42);
 
   &::-webkit-scrollbar {
@@ -19,7 +22,7 @@ body {
   align-items: center;
 
   main {
-    max-width: 640px;
+    width: 640px;
     padding: 5rem 1rem 2.5rem;
     margin: 0 auto;
     isolation: isolate;

@@ -1,8 +1,10 @@
 import type { MDXComponents } from "mdx/types";
-import { Image } from "@/components/image";
+import { Examples } from "@/components/examples";
+import { Tabs } from "@/components/tabs";
 
 export function getMDXComponents(): MDXComponents {
   return {
-    img: (props) => <Image {...props} />,
+    Tabs,
+    ...Examples,
   };
 }

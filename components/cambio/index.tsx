@@ -86,7 +86,7 @@ export const Trigger = React.forwardRef<
       layoutCrossfade={false}
       transition={{
         ease: [0.19, 1, 0.22, 1],
-        duration: 0.4,
+        duration: 10.4,
       }}
       initial={{
         opacity: 1,
@@ -96,6 +96,9 @@ export const Trigger = React.forwardRef<
       }}
       exit={{
         opacity: 1,
+      }}
+      style={{
+        zIndex: 1000000,
       }}
       whileHover={{
         opacity: 0.8,
