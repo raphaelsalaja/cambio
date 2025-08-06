@@ -1,6 +1,6 @@
 {
   "name": "cambio",
-  "version": "0.0.1",
+  "version": "0.0.0",
   "main": "./dist/cjs/index.js",
   "scripts": {
     "dev": "bunchee -w",

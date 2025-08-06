@@ -1,0 +1,5 @@
+---
+"cambio": minor
+---
+
+First release
