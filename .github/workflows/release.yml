@@ -12,12 +12,14 @@ permissions:
   pull-requests: write
 
 jobs:
-  release:
-    name: Release
+  prepare-and-pr:
+    name: Prepare and create PR
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Repo
+      - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
@@ -28,18 +30,25 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 18
-          cache: "pnpm"
+          cache: pnpm
 
-      - name: Install Dependencies
+      - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Create and publish versions
-        id: changesets
-        uses: changesets/action@v1
+      - name: Bump versions & update changelogs
+        run: pnpm changeset version
+
+      - name: Read new version
+        id: read_version
+        run: echo "VERSION=$(node -p \"require('./package.json').version\")" >> $GITHUB_ENV
+
+      - name: Create pull request with dynamic title
+        uses: peter-evans/create-pull-request@v5
         with:
-          commit: "chore: update versions"
-          title: "chore: update versions"
-          publish: pnpm changeset:release
-        env:
-          GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: "chore: update to v${{ env.VERSION }}"
+          title: "chore: update to v${{ env.VERSION }}"
+          body: |
+            This PR bumps all packages to version v${{ env.VERSION }} and updates changelogs.
+          branch: "release-v${{ env.VERSION }}"
+          base: main
