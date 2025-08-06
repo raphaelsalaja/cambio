@@ -8,7 +8,7 @@ html {
   color: var(--text-primary);
   scrollbar-color: oklch(0 0 0 / 5%) transparent;
   scrollbar-width: thin;
-  background: oklch(0.9938 0.0013 106.42);
+  background: oklch(1 0 0);
 
   &::-webkit-scrollbar {
     width: 0;
@@ -23,7 +23,7 @@ body {
 
   main {
     width: 640px;
-    padding: 5rem 1rem 2.5rem;
+    padding: 128px 0px;
     margin: 0 auto;
     isolation: isolate;
     transition: width 0.4s ease;
@@ -41,7 +41,7 @@ body {
       top: 0;
       right: 0;
       left: 0;
-      z-index: 9;
+      z-index: 10;
       height: 8rem;
       pointer-events: none;
       content: "";

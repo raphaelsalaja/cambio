@@ -8,7 +8,8 @@ export default async function Page() {
     return <div>Not found</div>;
   }
 
-  const { title } = page.data;
+  const { title, description } = page.data;
+
   const MDX = page.data.body;
 
   return (
@@ -16,6 +17,7 @@ export default async function Page() {
       <article>
         <header>
           <h1>{title}</h1>
+          <h2>{description}</h2>
         </header>
         <MDX components={getMDXComponents()} />
       </article>
