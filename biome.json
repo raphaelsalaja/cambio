@@ -15,7 +15,8 @@
       "!**/.vercel",
       "!**/.pnpm",
       "!**/*.svg",
-      "!**/lib/unicornStudio.umd.js"
+      "!**/lib/unicornStudio.umd.js",
+      "!**/.source"
     ]
   },
   "formatter": {
