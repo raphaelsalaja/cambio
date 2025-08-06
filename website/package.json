@@ -17,7 +17,6 @@
     "fumadocs-mdx": "^11.7.3",
     "fumadocs-ui": "^15.6.9",
     "motion": "^12.23.12",
-    "nanoid": "^5.1.5",
     "cambio": "workspace:*",
     "next": "15.4.5",
     "react": "19.1.1",
