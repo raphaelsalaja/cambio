@@ -19,7 +19,7 @@ It can be used anywhere in your application as follows.
 
 import { Cambio } from "cambio";
 
-export default function VaulDrawer() {
+export default function Lightbox() {
   return (
     <Cambio.Root>
       <Cambio.Trigger>{/* Your Content */}</Cambio.Trigger>
