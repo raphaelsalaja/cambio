@@ -6,9 +6,11 @@
     "website": "0.0.1"
   },
   "changesets": [
+    "happy-things-run",
     "loose-pigs-lick",
     "lovely-shrimps-serve",
     "old-parts-ask",
+    "olive-cases-bake",
     "slimy-areas-design"
   ]
 }
