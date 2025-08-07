@@ -1,77 +1,53 @@
 "use client";
 
-import { Dialog } from "@base-ui-components/react/dialog";
-import { motion } from "motion/react";
-import React from "react";
+import { forwardRef, useCallback, useId, useState } from "react";
 import { CambioContext } from "../../context";
+import { MotionDialog } from "../../motion";
+import type { CambioRootProps } from "../../types";
 
-const MotionBaseRoot = motion.create(Dialog.Root);
+export const Root = forwardRef<HTMLDivElement, CambioRootProps>(
+  function Root(props, _ref) {
+    const generatedId = useId();
 
-export const Root = React.forwardRef<
-  HTMLDivElement,
-  Omit<React.ComponentPropsWithoutRef<typeof MotionBaseRoot>, "layoutId"> & {
-    layoutId?: string;
-    onOpenChange?: (open: boolean) => void;
-  }
->(function Root(props, _ref) {
-  const {
-    children,
-    layoutId: layoutIdProp,
-    open,
-    onOpenChange,
-    defaultOpen = false,
-    ...dialogProps
-  } = props;
+    const {
+      open,
+      onOpenChange,
+      defaultOpen = false,
+      layoutId = `cambio-dialog-${generatedId}`,
+      ...rest
+    } = props;
 
-  const [internalOpen, setInternalOpen] = React.useState<boolean>(defaultOpen);
+    const [openState, setOpenState] = useState(defaultOpen);
 
-  const reactId = React.useId();
+    const isOpen = open ?? openState;
 
-  // Simplified layoutId generation without useMemo
-  const layoutId = layoutIdProp ?? `cambio-dialog-${reactId}`;
+    const handleChange = useCallback(
+      (next: boolean, _e?: Event, _reason?: unknown) => {
+        if (onOpenChange) {
+          onOpenChange(next);
+        } else {
+          setOpenState(next);
+        }
+      },
+      [onOpenChange],
+    );
 
-  const isOpen = open !== undefined ? open : internalOpen;
-
-  // Handle Base UI's onOpenChange signature but expose simplified version
-  const handleBaseUIOpenChange = React.useCallback(
-    (newOpen: boolean, _event?: Event, _reason?: unknown) => {
-      if (onOpenChange) {
-        onOpenChange(newOpen);
-      } else {
-        setInternalOpen(newOpen);
-      }
-    },
-    [onOpenChange],
-  );
-
-  const handleOpenChange = React.useCallback(
-    (newOpen: boolean) => {
-      if (onOpenChange) {
-        onOpenChange(newOpen);
-      } else {
-        setInternalOpen(newOpen);
-      }
-    },
-    [onOpenChange],
-  );
-
-  return (
-    <CambioContext.Provider
-      value={{
-        layoutId,
-        open: isOpen,
-        onOpenChange: handleOpenChange,
-      }}
-    >
-      <MotionBaseRoot
-        {...dialogProps}
-        open={isOpen}
-        onOpenChange={handleBaseUIOpenChange}
+    return (
+      <CambioContext.Provider
+        value={{
+          layoutId,
+          open: isOpen,
+          onOpenChange: (next) => handleChange(next),
+        }}
       >
-        {children}
-      </MotionBaseRoot>
-    </CambioContext.Provider>
-  );
-});
+        <MotionDialog.Root
+          {...rest}
+          open={isOpen}
+          onOpenChange={handleChange}
+        />
+      </CambioContext.Provider>
+    );
+  },
+);
 
 Root.displayName = "Cambio.Root";

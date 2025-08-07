@@ -1,123 +1,60 @@
 "use client";
 
-import { Dialog } from "@base-ui-components/react/dialog";
-import { AnimatePresence, motion } from "motion/react";
-import React from "react";
+import { AnimatePresence } from "motion/react";
+import React, { useMemo } from "react";
 import { useCambioContext } from "../../context";
-import type { DragProps } from "../../types";
+import { MotionDialog } from "../../motion";
+import type { CambioPopupProps, MotionDraggableProps } from "../../types";
 
-const MotionBasePopup = motion.create(Dialog.Popup);
+export const Popup = React.forwardRef<HTMLDivElement, CambioPopupProps>(
+  function Popup({ dismissable, ...props }, ref) {
+    const { layoutId, open, onOpenChange } = useCambioContext();
 
-export const Popup = React.forwardRef<
-  HTMLDivElement,
-  Omit<React.ComponentPropsWithoutRef<typeof MotionBasePopup>, "layoutId"> &
-    DragProps
->(function Popup({ ...props }, ref) {
-  const { layoutId, open, onOpenChange } = useCambioContext();
+    const dragging: MotionDraggableProps = useMemo(() => {
+      if (!dismissable) return {};
 
-  const {
-    transition = {
-      type: "spring",
-      bounce: 0.2,
-      duration: 0.4,
-    },
-    dismissable = false,
-    dragThreshold = 100,
-    dragVelocityThreshold = 500,
-    dragDirection = true,
-    dragElastic = 0.2,
-    onDragStart,
-    onDrag,
-    onDragEnd: onDragEndProp,
-    ...restProps
-  } = props;
+      const { threshold = 100, velocity = 500 } =
+        typeof dismissable === "object" ? dismissable : {};
 
-  const handleDragStart = React.useCallback(() => {
-    onDragStart?.();
-  }, [onDragStart]);
-
-  const handleDrag = React.useCallback(
-    (
-      _: unknown,
-      info: {
-        offset: { x: number; y: number };
-        velocity: { x: number; y: number };
-      },
-    ) => {
-      onDrag?.(info);
-    },
-    [onDrag],
-  );
-
-  const handleDragEnd = React.useCallback(
-    (
-      _: unknown,
-      info: {
-        offset: { x: number; y: number };
-        velocity: { x: number; y: number };
-      },
-    ) => {
-      // Call custom onDragEnd callback first
-      onDragEndProp?.(info);
-
-      // Simplified drag logic using hypot for distance and velocity calculation
-      const distance = Math.hypot(info.offset.x, info.offset.y);
-      const speed = Math.hypot(info.velocity.x, info.velocity.y);
-      const shouldDismiss =
-        distance > dragThreshold || speed > dragVelocityThreshold;
-
-      if (shouldDismiss && onOpenChange) {
-        onOpenChange(false);
-      }
-    },
-    [onDragEndProp, dragThreshold, dragVelocityThreshold, onOpenChange],
-  );
-
-  const dragProps = dismissable
-    ? {
-        drag: dragDirection || true,
+      return {
+        drag: true,
+        dragElastic: 0.3,
+        dragMomentum: true,
         dragSnapToOrigin: true,
-        dragConstraints:
-          dragDirection === "y"
-            ? { top: 0 }
-            : dragDirection === "x"
-              ? { left: 0 }
-              : {},
-        dragElastic: dragElastic || 0.2,
-        onDragStart: handleDragStart,
-        onDrag: handleDrag,
-        onDragEnd: handleDragEnd,
-        whileDrag: {
-          scale: 0.95,
-          transition: { duration: 0.2 },
-        },
-      }
-    : {};
-
-  return (
-    <AnimatePresence>
-      {open && (
-        <MotionBasePopup
-          {...dragProps}
-          {...restProps}
-          ref={ref}
-          layoutId={layoutId}
-          transformTemplate={(_, generated) =>
-            `translate(-50%, -50%) ${generated}`
+        dragTransition: { bounceStiffness: 800, bounceDamping: 40 },
+        dragConstraints: { top: 0, left: 0, right: 0, bottom: 0 },
+        onDragEnd: (_e, info) => {
+          const dist = Math.hypot(info.offset.x, info.offset.y);
+          const speed = Math.hypot(info.velocity.x, info.velocity.y);
+          if ((dist > threshold || speed > velocity) && onOpenChange) {
+            onOpenChange(false);
           }
-          transition={transition}
-          layoutCrossfade={false}
-          style={{
-            position: "fixed",
-            top: "50%",
-            left: "50%",
-            touchAction: dismissable ? "none" : "auto",
-            ...restProps.style,
-          }}
-        />
-      )}
-    </AnimatePresence>
-  );
-});
+        },
+      };
+    }, [dismissable, onOpenChange]);
+
+    return (
+      <AnimatePresence>
+        {open && (
+          <MotionDialog.Popup
+            {...props}
+            {...dragging}
+            ref={ref}
+            layoutId={layoutId}
+            layoutCrossfade={false}
+            style={{
+              position: "fixed",
+              top: "50%",
+              left: "50%",
+              translate: "-50% -50%",
+              touchAction: dismissable ? "none" : "auto",
+              ...props.style,
+            }}
+          />
+        )}
+      </AnimatePresence>
+    );
+  },
+);
 
 Popup.displayName = "Cambio.Popup";

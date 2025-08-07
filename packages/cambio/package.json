@@ -74,6 +74,8 @@
     "./components/portal": {},
     "./components/root": {},
     "./components/title": {},
-    "./components/trigger": {}
+    "./components/trigger": {},
+    "./components": {},
+    "./motion": {}
   }
 }

@@ -1,18 +1,15 @@
 "use client";
 
-import { Dialog } from "@base-ui-components/react/dialog";
-import { motion } from "motion/react";
 import React from "react";
-
-const MotionBaseClose = motion.create(Dialog.Close);
+import { MotionDialog } from "../../motion";
+import type { CambioCloseProps } from "../../types";
 
 export const Close = React.memo(
-  React.forwardRef<
-    HTMLButtonElement,
-    React.ComponentPropsWithoutRef<typeof MotionBaseClose>
-  >(function Close(props, ref) {
-    return <MotionBaseClose ref={ref} {...props} />;
-  }),
+  React.forwardRef<HTMLButtonElement, CambioCloseProps>(
+    function Close(props, ref) {
+      return <MotionDialog.Close ref={ref} {...props} />;
+    },
+  ),
 );
 
 Close.displayName = "Cambio.Close";

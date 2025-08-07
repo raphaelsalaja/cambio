@@ -12,11 +12,15 @@ Cambio simplifies shared animations in React by removing the complexity that man
 
 Built on [Base UI's](https://base-ui.com/) accessible primitives and [Motion's](https://motion.dev/) powerful animation library, Cambio ensures your animations are both performant and inclusive by default.
 
+---
+
 # Installation
 
 ```bash
 pnpm add cambio
 ```
+
+---
 
 # Usage
 
@@ -40,7 +44,9 @@ export default function Lightbox() {
 }
 ```
 
-# Motion Integration
+---
+
+# Motion
 
 Cambio leverages the power of [Motion](https://motion.dev/) to provide a seamless animation experience.
 For example you can easily add your own transitions by passing a `transition` prop to any of the components.
@@ -52,6 +58,22 @@ This saves having to create a `<motion.div/>` for each component.
   {/* Your Content */}
 </Cambio.Popup>
 ```
+
+---
+
+# Dismissability
+
+Cambio also supports dismissible popups, allowing users to easily close the popup by dragging on the popup. This prop is completely optional, so if you don't need this behavior, you can simply omit it.
+
+<center>
+  <Dismissable />
+</center>
+
+```tsx lineNumbers
+<Cambio.Popup dismissable>{/* Your Content */}</Cambio.Popup>
+```
+
+---
 
 # Support
 

@@ -2,7 +2,7 @@
 
 export { CambioContext, useCambioContext } from "./context";
 
-export type { CambioContextProps, DragProps } from "./types";
+export type { CambioContextProps } from "./types";
 
 import * as Components from "./components";
 

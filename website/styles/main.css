@@ -41,6 +41,10 @@ article {
     line-height: 1.5;
   }
 
+  hr {
+    margin: 24px 0;
+    border: none;
+  }
   center {
     position: relative;
     display: flex;
@@ -84,10 +88,9 @@ article {
   :is(
       p + p,
       h1 + h2,
-      h2 + h3,
-      :is(h1, h2, h3, header, [data-stage]) + p,
-      :is(h1, p) + .shiki,
-      .shiki + p
+      p + center,
+      :is(h1, h2, header, .shiki, p) + p,
+      :is(h1, center, code, p) + .shiki
     ) {
     margin-block-start: 12px;
   }
