@@ -56,6 +56,24 @@
         "types": "./dist/cjs/index.d.ts",
         "default": "./dist/cjs/index.js"
       }
-    }
+    },
+    "./context": {},
+    "./types": {},
+    "./components/Backdrop": {},
+    "./components/Close": {},
+    "./components/Description": {},
+    "./components/Popup": {},
+    "./components/Portal": {},
+    "./components/Root": {},
+    "./components/Title": {},
+    "./components/Trigger": {},
+    "./components/backdrop": {},
+    "./components/close": {},
+    "./components/description": {},
+    "./components/popup": {},
+    "./components/portal": {},
+    "./components/root": {},
+    "./components/title": {},
+    "./components/trigger": {}
   }
 }
