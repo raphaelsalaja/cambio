@@ -1,5 +1,11 @@
 # cambio
 
+## 1.0.0-beta.2
+
+### Minor Changes
+
+- 3910f49: fix documentation
+
 ## 1.0.0-beta.1
 
 ### Major Changes
