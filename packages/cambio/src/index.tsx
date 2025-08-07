@@ -7,6 +7,7 @@ import React from "react";
 interface CambioContextProps {
   open: boolean;
   layoutId: string;
+  onOpenChange?: (open: boolean) => void;
 }
 
 export const CambioContext = React.createContext<CambioContextProps | null>(
@@ -67,6 +68,7 @@ const Root = React.forwardRef<
       value={{
         layoutId: uniqueLayoutId,
         open: isOpen,
+        onOpenChange: handleOpenChange,
       }}
     >
       <MotionBaseRoot
@@ -151,9 +153,24 @@ const MotionBasePopup = motion.create(Dialog.Popup);
 
 const Popup = React.forwardRef<
   HTMLDivElement,
-  React.ComponentPropsWithoutRef<typeof MotionBasePopup>
+  React.ComponentPropsWithoutRef<typeof MotionBasePopup> & {
+    dismissable?: boolean;
+    dragThreshold?: number;
+    dragVelocityThreshold?: number;
+    dragDirection?: "x" | "y" | boolean;
+    dragElastic?: number;
+    onDragStart?: () => void;
+    onDrag?: (info: {
+      offset: { x: number; y: number };
+      velocity: { x: number; y: number };
+    }) => void;
+    onDragEnd?: (info: {
+      offset: { x: number; y: number };
+      velocity: { x: number; y: number };
+    }) => void;
+  }
 >(function Popup({ ...props }, ref) {
-  const { layoutId, open } = useCambioContext();
+  const { layoutId, open, onOpenChange } = useCambioContext();
 
   const {
     transition = {
@@ -161,13 +178,105 @@ const Popup = React.forwardRef<
       bounce: 0.2,
       duration: 0.4,
     },
+    dismissable = false,
+    dragThreshold = 100,
+    dragVelocityThreshold = 500,
+    dragDirection = true,
+    dragElastic = 0.2,
+    onDragStart,
+    onDrag,
+    onDragEnd: onDragEndProp,
+    ...restProps
   } = props;
+
+  const handleDragStart = React.useCallback(() => {
+    onDragStart?.();
+  }, [onDragStart]);
+
+  const handleDrag = React.useCallback(
+    (
+      _: unknown,
+      info: {
+        offset: { x: number; y: number };
+        velocity: { x: number; y: number };
+      },
+    ) => {
+      onDrag?.(info);
+    },
+    [onDrag],
+  );
+
+  const handleDragEnd = React.useCallback(
+    (
+      _: unknown,
+      info: {
+        offset: { x: number; y: number };
+        velocity: { x: number; y: number };
+      },
+    ) => {
+      // Call custom onDragEnd callback first
+      onDragEndProp?.(info);
+
+      // Determine dismiss condition based on drag direction
+      let shouldDismiss = false;
+
+      if (dragDirection === "y") {
+        shouldDismiss =
+          Math.abs(info.offset.y) > (dragThreshold || 100) ||
+          Math.abs(info.velocity.y) > (dragVelocityThreshold || 500);
+      } else if (dragDirection === "x") {
+        shouldDismiss =
+          Math.abs(info.offset.x) > (dragThreshold || 100) ||
+          Math.abs(info.velocity.x) > (dragVelocityThreshold || 500);
+      } else if (dragDirection === true) {
+        // Allow dismissal in any direction when drag is true
+        shouldDismiss =
+          Math.sqrt(info.offset.x ** 2 + info.offset.y ** 2) >
+            (dragThreshold || 100) ||
+          Math.sqrt(info.velocity.x ** 2 + info.velocity.y ** 2) >
+            (dragVelocityThreshold || 500);
+      }
+
+      if (shouldDismiss && onOpenChange) {
+        onOpenChange(false);
+      }
+    },
+    [
+      onDragEndProp,
+      dragDirection,
+      dragThreshold,
+      dragVelocityThreshold,
+      onOpenChange,
+    ],
+  );
+
+  const dragProps = dismissable
+    ? {
+        drag: dragDirection || true,
+        dragSnapToOrigin: true,
+        dragConstraints:
+          dragDirection === "y"
+            ? { top: 0 }
+            : dragDirection === "x"
+              ? { left: 0 }
+              : {},
+        dragElastic: dragElastic || 0.2,
+        onDragStart: handleDragStart,
+        onDrag: handleDrag,
+        onDragEnd: handleDragEnd,
+        whileDrag: {
+          scale: 0.95,
+          transition: { duration: 0.2 },
+        },
+      }
+    : {};
 
   return (
     <AnimatePresence>
       {open && (
         <MotionBasePopup
-          {...props}
+          {...dragProps}
+          {...restProps}
           ref={ref}
           layoutId={layoutId}
           transformTemplate={(_, generated) =>
@@ -179,6 +288,8 @@ const Popup = React.forwardRef<
             position: "fixed",
             top: "50%",
             left: "50%",
+            touchAction: dismissable ? "none" : "auto",
+            ...restProps.style,
           }}
         />
       )}

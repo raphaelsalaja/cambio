@@ -17,6 +17,7 @@ export function Basic() {
           fill
           style={{
             objectFit: "cover",
+            pointerEvents: "none",
           }}
           placeholder="blur"
           blurDataURL={blurDataURL}
@@ -24,12 +25,13 @@ export function Basic() {
       </Cambio.Trigger>
       <Cambio.Portal>
         <Cambio.Backdrop className={styles.backdrop} />
-        <Cambio.Popup className={styles.popup}>
+        <Cambio.Popup dismissable className={styles.popup}>
           <Image
             src={"/media/basic.jpg"}
             alt={"Basic Example"}
             fill
             style={{
+              pointerEvents: "none",
               objectFit: "cover",
             }}
             placeholder="blur"
