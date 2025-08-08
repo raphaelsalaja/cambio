@@ -1,5 +1,21 @@
 # Cambio
 
+## 1.0.5
+
+### Patch Changes
+
+- **CI/CD Infrastructure**: Added automated publishing workflow
+  - Implemented GitHub Actions workflow for automated package publishing
+  - Workflow triggers on version tag pushes for streamlined releases
+  - Automated steps include building, testing, and publishing to npm
+  - Improved developer workflow with CI/CD automation
+
+- **Project maintenance**: Repository cleanup and licensing
+  - Added MIT License for clear legal framework
+  - Cleaned up website configuration by removing unused frontmatter properties
+  - Optimized media assets and documentation structure
+  - Better project organization and maintainability
+
 ## 1.0.4
 
 ### Patch Changes
