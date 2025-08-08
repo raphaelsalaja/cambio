@@ -1,5 +1,11 @@
 # cambio
 
+## 1.0.1
+
+### Patch Changes
+
+- c08d4b0: Bump to v1.0.1
+
 ## 1.0.0
 
 ### Major Changes
