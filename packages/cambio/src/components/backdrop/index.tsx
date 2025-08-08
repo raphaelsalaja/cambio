@@ -10,10 +10,20 @@ export const Backdrop = React.forwardRef<HTMLDivElement, CambioBackdropProps>(
   function Backdrop(props, ref) {
     const { layoutId, open } = useCambioContext();
     const {
-      transition = { ease: [0.19, 1, 0.22, 1], duration: 0.4 },
-      initial = { opacity: 0, transition: { delay: 0.1 } },
-      animate = { opacity: 1 },
-      exit = { opacity: 0 },
+      transition = {
+        ease: [0.19, 1, 0.22, 1],
+        duration: 0.6,
+        delay: 0.2,
+      },
+      initial = {
+        opacity: 0,
+      },
+      animate = {
+        opacity: 1,
+      },
+      exit = {
+        opacity: 0,
+      },
     } = props;
 
     return (
