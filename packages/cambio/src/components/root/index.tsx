@@ -1,6 +1,7 @@
 "use client";
 
-import { forwardRef, useCallback, useId, useState } from "react";
+// biome-ignore lint/correctness/noUnusedImports: React
+import React, { forwardRef, useCallback, useId, useState } from "react";
 import { CambioContext } from "../../context";
 import { MotionDialog } from "../../motion";
 import type { CambioRootProps } from "../../types";

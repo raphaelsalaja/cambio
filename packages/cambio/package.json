@@ -57,6 +57,18 @@
         "types": "./dist/cjs/index.d.ts",
         "default": "./dist/cjs/index.js"
       }
-    }
+    },
+    "./components": {},
+    "./context": {},
+    "./motion": {},
+    "./types": {},
+    "./components/backdrop": {},
+    "./components/close": {},
+    "./components/description": {},
+    "./components/popup": {},
+    "./components/portal": {},
+    "./components/root": {},
+    "./components/title": {},
+    "./components/trigger": {}
   }
 }
