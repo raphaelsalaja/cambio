@@ -1,5 +1,11 @@
 # cambio
 
+## 1.0.0-beta.4
+
+### Patch Changes
+
+- Branding
+
 ## 1.0.0-beta.3
 
 ### Patch Changes
