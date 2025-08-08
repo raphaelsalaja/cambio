@@ -39,10 +39,22 @@ For example you can easily add your own transitions by passing a `transition` pr
 
 This saves having to create a `<motion.div/>` for each component.
 
-```tsx lineNumbers
+```tsx
 <Cambio.Popup transition={{ type: "spring", bounce: 0.2, duration: 0.4 }}>
   {/* Your Content */}
 </Cambio.Popup>
+```
+
+# Dismissability
+
+Cambio also supports dismissible popups, allowing users to easily close the popup by dragging on the popup. This prop is completely optional, so if you don't need this behavior, you can simply omit it.
+
+<center>
+  <Dismissable />
+</center>
+
+```tsx
+<Cambio.Popup dismissable>{/* Your Content */}</Cambio.Popup>
 ```
 
 # Support
