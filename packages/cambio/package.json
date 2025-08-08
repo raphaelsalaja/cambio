@@ -1,5 +1,6 @@
 {
   "name": "cambio",
+  "description": "A simple shared animation component for React",
   "version": "1.0.0-beta.3",
   "main": "./dist/cjs/index.js",
   "scripts": {
@@ -56,26 +57,6 @@
         "types": "./dist/cjs/index.d.ts",
         "default": "./dist/cjs/index.js"
       }
-    },
-    "./context": {},
-    "./types": {},
-    "./components/Backdrop": {},
-    "./components/Close": {},
-    "./components/Description": {},
-    "./components/Popup": {},
-    "./components/Portal": {},
-    "./components/Root": {},
-    "./components/Title": {},
-    "./components/Trigger": {},
-    "./components/backdrop": {},
-    "./components/close": {},
-    "./components/description": {},
-    "./components/popup": {},
-    "./components/portal": {},
-    "./components/root": {},
-    "./components/title": {},
-    "./components/trigger": {},
-    "./components": {},
-    "./motion": {}
+    }
   }
 }

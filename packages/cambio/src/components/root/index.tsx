@@ -1,6 +1,6 @@
 "use client";
 
-import React, { forwardRef, useCallback, useId, useState } from "react";
+import { forwardRef, useCallback, useId, useState } from "react";
 import { CambioContext } from "../../context";
 import { MotionDialog } from "../../motion";
 import type { CambioRootProps } from "../../types";

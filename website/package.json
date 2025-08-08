@@ -12,12 +12,12 @@
   "dependencies": {
     "@base-ui-components/react": "1.0.0-beta.2",
     "@types/mdx": "^2.0.13",
+    "cambio": "workspace:*",
     "fumadocs-core": "^15.6.9",
     "fumadocs-docgen": "^2.1.0",
     "fumadocs-mdx": "^11.7.3",
     "fumadocs-ui": "^15.6.9",
     "motion": "^12.23.12",
-    "cambio": "workspace:*",
     "next": "15.4.5",
     "react": "19.1.1",
     "react-dom": "19.1.1",
