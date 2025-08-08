@@ -15,7 +15,6 @@
     "react": "^19.1.1"
   },
   "devDependencies": {
-    "@changesets/cli": "^2.29.5",
     "@tsconfig/next": "^2.0.3",
     "bunchee": "^6.6.0",
     "typescript": "5.8.3"

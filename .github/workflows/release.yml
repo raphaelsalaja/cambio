@@ -2,14 +2,13 @@ name: Release
 
 on:
   push:
-    branches:
-      - main
+    tags:
+      - 'v*'
 
 concurrency: ${{ github.workflow }}-${{ github.ref }}
 
 permissions:
   contents: write
-  pull-requests: write
 
 jobs:
   release:
@@ -29,17 +28,15 @@ jobs:
         with:
           node-version: 18
           cache: "pnpm"
+          registry-url: 'https://registry.npmjs.org'
 
       - name: Install Dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Create and publish versions
-        id: changesets
-        uses: changesets/action@v1
-        with:
-          commit: "chore: update versions"
-          title: "chore: update versions"
-          publish: pnpm changeset:release
+      - name: Build packages
+        run: pnpm build
+
+      - name: Publish to npm
+        run: npm publish --workspace=packages/cambio
         env:
-          GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

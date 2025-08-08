@@ -6,16 +6,11 @@
     "lint": "turbo lint",
     "build": "turbo run build",
     "start": "cd website && next start",
-    "changeset": "changeset",
-    "changeset:version": "changeset version",
-    "changeset:release": "pnpm build && changeset publish",
-    "changeset:status": "changeset status",
-    "beta:exit": "changeset pre exit",
-    "beta:enter": "changeset pre enter beta"
+    "publish": "pnpm build && npm publish --workspace=packages/cambio",
+    "version": "node scripts/version.js"
   },
   "devDependencies": {
     "@biomejs/biome": "2.1.2",
-    "@changesets/cli": "^2.29.5",
     "prettier": "^3.6.2",
     "turbo": "^2.5.4",
     "typescript": "5.8.3"
