@@ -1,3 +1,5 @@
+![NPM Version](https://img.shields.io/npm/v/cambio)
+
 # Cambio
 
 Cambio simplifies shared animations in React by removing the complexity that many developers face when setting up these interactions. By eliminating boilerplate code, it streamlines both implementation and maintenance workflows.
