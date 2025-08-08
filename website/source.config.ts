@@ -10,30 +10,12 @@ import {
   metaSchema,
 } from "fumadocs-mdx/config";
 
-import { z } from "zod";
+import type { z } from "zod";
 
 export const docs = defineDocs({
   dir: "content",
   docs: {
-    schema: frontmatterSchema.extend({
-      external: z.string().optional(),
-      preview: z.string().optional(),
-      disabled: z.boolean().optional(),
-      timestamp: z.number().optional(),
-      desktop: z.boolean().optional(),
-      category: z
-        .enum([
-          "Experiments",
-          "Experience",
-          "Projects",
-          "Animation",
-          "Thoughts",
-          "Craft",
-          "Design",
-          "Fashion",
-        ])
-        .optional(),
-    }),
+    schema: frontmatterSchema,
   },
   meta: {
     schema: metaSchema,
