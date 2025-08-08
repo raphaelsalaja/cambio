@@ -1,6 +1,16 @@
 @import url("./reset.css");
 @import url("./theme.css");
 
+* {
+  &:focus {
+    outline: none;
+  }
+
+  &:focus-visible {
+    outline: 2px solid oklch(0 0 0 / 20%);
+    outline-offset: 4px;
+  }
+}
 html {
   overflow-x: hidden;
   font-size: 14px;

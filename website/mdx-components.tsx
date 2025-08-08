@@ -1,8 +1,9 @@
 import type { MDXComponents } from "mdx/types";
-import { Examples } from "@/components/examples";
+import { Basic, Dismissable } from "@/components/examples";
 
 export function getMDXComponents(): MDXComponents {
   return {
-    ...Examples,
+    Basic,
+    Dismissable,
   };
 }
