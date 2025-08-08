@@ -4,7 +4,19 @@
   left: 0;
   width: 100vw;
   height: 100vh;
-  height: 100svh;
+
+  /* Extend past safe areas */
+  padding-top: env(safe-area-inset-top);
+  padding-right: env(safe-area-inset-right);
+  padding-bottom: env(safe-area-inset-bottom);
+  padding-left: env(safe-area-inset-left);
+
+  /* Extend the actual dimensions to cover safe areas */
+  margin-top: calc(-1 * env(safe-area-inset-top));
+  margin-right: calc(-1 * env(safe-area-inset-right));
+  margin-bottom: calc(-1 * env(safe-area-inset-bottom));
+  margin-left: calc(-1 * env(safe-area-inset-left));
+
   background-color: oklch(0 0 0 / 20%);
 
   @media (max-width: 768px) {
