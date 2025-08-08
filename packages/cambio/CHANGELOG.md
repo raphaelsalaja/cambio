@@ -1,5 +1,35 @@
 # cambio
 
+## 1.0.0
+
+### Major Changes
+
+- 37f53f0: Major Beta Release
+
+### Minor Changes
+
+- 3910f49: fix documentation
+- 7c6c206: First release
+
+### Patch Changes
+
+- 47c34fc: Complete refactor
+- af6a3d9: Add comprehensive README and package keywords
+  - Add detailed README.md with installation, usage examples, and Motion integration guide
+  - Add extensive package.json keywords for better discoverability (react, animation, motion, dialog, modal, popup, ui, components, base-ui, shared-layout, layout-animation, framer-motion, spring, transition, accessibility, a11y)
+  - Include usage examples with Base UI primitives and Motion transitions
+  - Add support section with GitHub and Twitter links
+
+- d6c403c: Refactor component architecture for better maintainability
+  - Split monolithic component structure into individual component files
+  - Added dedicated components: `Backdrop`, `Close`, `Description`, `Portal`, `Root`, `Title`, and `Trigger`
+  - Created centralized context and types modules
+  - Enhanced `Popup` component with drag-and-dismiss functionality
+  - Improved code organization and modularity for easier development and maintenance
+
+- 7c6c206: Beta release
+- 586f37c: Branding
+
 ## 1.0.0-beta.4
 
 ### Patch Changes
