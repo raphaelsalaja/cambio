@@ -1,10 +1,16 @@
 import { Roboto_Mono } from "next/font/google";
 import localFont from "next/font/local";
 import "@/styles/main.css";
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { opengraph } from "@/config/site";
 
 export const metadata: Metadata = opengraph;
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
+};
 
 const inter = localFont({
   src: "./fonts/inter/variable.ttf",
