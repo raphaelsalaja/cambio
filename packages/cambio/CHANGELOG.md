@@ -1,5 +1,11 @@
 # cambio
 
+## 1.0.0-beta.3
+
+### Patch Changes
+
+- 47c34fc: Complete refactor
+
 ## 1.0.0-beta.2
 
 ### Minor Changes

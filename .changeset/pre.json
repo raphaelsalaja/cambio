@@ -6,6 +6,7 @@
     "website": "0.0.1"
   },
   "changesets": [
+    "common-cooks-stare",
     "happy-things-run",
     "loose-pigs-lick",
     "lovely-shrimps-serve",
