@@ -32,7 +32,7 @@ export default function Example() {
 }
 ```
 
-# Motion Integration
+# Motion
 
 Cambio leverages the power of [Motion](https://motion.dev/) to provide a seamless animation experience.
 For example you can easily add your own transitions by passing a `transition` prop to any of the components.
