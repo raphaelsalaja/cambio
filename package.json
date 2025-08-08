@@ -6,8 +6,7 @@
     "lint": "turbo lint",
     "build": "turbo run build",
     "start": "cd website && next start",
-    "publish": "pnpm build && npm publish --workspace=packages/cambio",
-    "version": "node scripts/version.js"
+    "publish": "pnpm build && npm publish --workspace=packages/cambio"
   },
   "devDependencies": {
     "@biomejs/biome": "2.1.2",
