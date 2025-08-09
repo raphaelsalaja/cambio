@@ -11,6 +11,7 @@
     outline-offset: 4px;
   }
 }
+
 html {
   overflow-x: hidden;
   font-size: 14px;
@@ -48,13 +49,14 @@ article {
   text-wrap: pretty;
 
   :is(h1, h2, p) {
-    line-height: 1.5;
+    line-height: 24px;
   }
 
   hr {
     margin: 24px 0;
     border: none;
   }
+
   center {
     position: relative;
     display: flex;
@@ -105,8 +107,12 @@ article {
     margin-block-start: 12px;
   }
 
+  .shiki + .shiki {
+    margin-block-start: 12px;
+  }
+
   p code {
-    padding: 2px 6px;
+    padding: 0px 6px;
     font-family: var(--font-mono);
     font-size: 12px;
     background-color: var(--background-secondary);
@@ -133,11 +139,11 @@ article {
   position: relative;
   width: 100%;
   padding: 12px 16px;
-
   overflow-x: auto;
   background-color: var(--shiki-light-bg);
   border: 1px solid var(--border-primary);
   border-radius: 8px;
+
   .line {
     span {
       font-family: var(--font-mono);

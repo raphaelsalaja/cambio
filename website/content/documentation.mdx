@@ -8,9 +8,11 @@ publishedAt: "2025-07-27"
   <Basic />
 </center>
 
-Cambio simplifies shared animations in React by removing the complexity that many developers face when setting up these interactions. By eliminating boilerplate code, it streamlines both implementation and maintenance workflows.
+Cambio simplifies shared animations in React by removing the complexity that many developers face when setting up these interactions.
+By eliminating boilerplate code, it streamlines both implementation and maintenance workflows.
 
-Built on [Base UI's](https://base-ui.com/) accessible primitives and [Motion's](https://motion.dev/) powerful animation library, Cambio ensures your animations are both performant and inclusive by default.
+Built on [Base UI's](https://base-ui.com/) accessible primitives and [Motion's](https://motion.dev/) powerful animation library,
+Cambio ensures your animations are both performant and inclusive by default.
 
 ---
 
@@ -19,6 +21,27 @@ Built on [Base UI's](https://base-ui.com/) accessible primitives and [Motion's](
 ```bash
 pnpm add cambio
 ```
+
+# Setup
+
+Cambio leverages Base UI's Dialog component to render popups outside of the main DOM hierarchy.
+To make portalled components always appear on top of the entire page, add the following style to your application layout root.
+
+```tsx
+// layout.tsx
+<body>
+  <div className="root">
+    {children}
+  </div>
+</body>
+
+// styles.css
+.root {
+  isolation: isolate;
+}
+```
+
+For more information, see the [Base UI Documentation](https://base-ui.com/react/overview/quick-start#set-up-portals).
 
 ---
 
@@ -50,7 +73,6 @@ export default function Lightbox() {
 
 Cambio leverages the power of [Motion](https://motion.dev/) to provide a seamless animation experience.
 For example you can easily add your own transitions by passing a `transition` prop to any of the components.
-
 This saves having to create a `<motion.div/>` for each component.
 
 ```tsx lineNumbers
@@ -80,5 +102,3 @@ Cambio also supports dismissible popups, allowing users to easily close the popu
 For any issues or feature requests, please open an issue on [GitHub](https://github.com/raphaelsalaja/cambio).
 
 You can also reach out to me on [Twitter](https://x.com/raphaelsalaja).
-
----
