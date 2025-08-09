@@ -1,4 +1,4 @@
-import { CopyButton } from "@/components/menu";
+import { Menu } from "@/components/menu";
 import { getHomePage, getHomePageContent } from "@/lib/fumadocs";
 import { getMDXComponents } from "@/mdx-components";
 
@@ -28,7 +28,7 @@ export default function Page() {
             <div>
               <h1>{title}</h1>
             </div>
-            <CopyButton content={getHomePageContent()} />
+            <Menu content={getHomePageContent()} />
           </div>
         </header>
         <MDX components={getMDXComponents()} />

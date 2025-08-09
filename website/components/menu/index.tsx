@@ -1,6 +1,6 @@
 "use client";
 
-import { Menu } from "@base-ui-components/react/menu";
+import { Menu as BaseMenu } from "@base-ui-components/react/menu";
 
 import {
   AnimatePresence,
@@ -13,11 +13,11 @@ import styles from "./styles.module.css";
 
 const query = `Read https://cambio.raphaelsalaja.com/, I want to ask questions about it.`;
 
-interface CopyButtonProps {
+interface MenuProps {
   content: string;
 }
 
-export function CopyButton({ content }: CopyButtonProps) {
+export function Menu({ content }: MenuProps) {
   const [copied, setCopied] = useState(false);
 
   const animation: MotionNodeAnimationOptions = {
@@ -28,8 +28,8 @@ export function CopyButton({ content }: CopyButtonProps) {
   };
 
   return (
-    <Menu.Root>
-      <Menu.Trigger className={styles.trigger} disabled={copied}>
+    <BaseMenu.Root>
+      <BaseMenu.Trigger className={styles.trigger} disabled={copied}>
         <AnimatePresence initial={false} mode="popLayout">
           {copied ? (
             <motion.div key="check" {...animation}>
@@ -41,15 +41,15 @@ export function CopyButton({ content }: CopyButtonProps) {
             </motion.div>
           )}
         </AnimatePresence>
-      </Menu.Trigger>
-      <Menu.Portal>
-        <Menu.Positioner
+      </BaseMenu.Trigger>
+      <BaseMenu.Portal>
+        <BaseMenu.Positioner
           className={styles.positioner}
           align="end"
           sideOffset={8}
         >
-          <Menu.Popup className={styles.popup}>
-            <Menu.Item
+          <BaseMenu.Popup className={styles.popup}>
+            <BaseMenu.Item
               className={styles.item}
               render={
                 <a
@@ -61,7 +61,7 @@ export function CopyButton({ content }: CopyButtonProps) {
                 </a>
               }
             />
-            <Menu.Item
+            <BaseMenu.Item
               className={styles.item}
               render={
                 <a
@@ -73,7 +73,7 @@ export function CopyButton({ content }: CopyButtonProps) {
                 </a>
               }
             />
-            <Menu.Item
+            <BaseMenu.Item
               className={styles.item}
               render={
                 <a
@@ -85,8 +85,8 @@ export function CopyButton({ content }: CopyButtonProps) {
                 </a>
               }
             />
-            <Menu.Separator className={styles.separator} />
-            <Menu.Item
+            <BaseMenu.Separator className={styles.separator} />
+            <BaseMenu.Item
               className={styles.item}
               onClick={async () => {
                 try {
@@ -99,8 +99,8 @@ export function CopyButton({ content }: CopyButtonProps) {
               }}
             >
               Copy Markdown
-            </Menu.Item>
-            <Menu.Item
+            </BaseMenu.Item>
+            <BaseMenu.Item
               className={styles.item}
               render={
                 <a
@@ -112,9 +112,9 @@ export function CopyButton({ content }: CopyButtonProps) {
                 </a>
               }
             />
-            <Menu.Separator className={styles.separator} />
+            <BaseMenu.Separator className={styles.separator} />
 
-            <Menu.Item
+            <BaseMenu.Item
               className={styles.item}
               render={
                 <a
@@ -126,7 +126,7 @@ export function CopyButton({ content }: CopyButtonProps) {
                 </a>
               }
             />
-            <Menu.Item
+            <BaseMenu.Item
               className={styles.item}
               render={
                 <a
@@ -138,7 +138,7 @@ export function CopyButton({ content }: CopyButtonProps) {
                 </a>
               }
             />
-            <Menu.Item
+            <BaseMenu.Item
               className={styles.item}
               render={
                 <a
@@ -150,9 +150,9 @@ export function CopyButton({ content }: CopyButtonProps) {
                 </a>
               }
             />
-          </Menu.Popup>
-        </Menu.Positioner>
-      </Menu.Portal>
-    </Menu.Root>
+          </BaseMenu.Popup>
+        </BaseMenu.Positioner>
+      </BaseMenu.Portal>
+    </BaseMenu.Root>
   );
 }
