@@ -8,11 +8,10 @@ import {
   motion,
 } from "motion/react";
 import { useState } from "react";
-import { APP_URL } from "@/config/site";
 import { Check, Dots } from "../icons";
 import styles from "./styles.module.css";
 
-const query = `Read ${APP_URL}, I want to ask questions about it.`;
+const query = `Read https://cambio.raphaelsalaja.com/, I want to ask questions about it.`;
 
 interface CopyButtonProps {
   content: string;
