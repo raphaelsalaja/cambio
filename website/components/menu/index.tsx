@@ -11,7 +11,7 @@ import { useState } from "react";
 import { Check, Dots } from "../icons";
 import styles from "./styles.module.css";
 
-const query = `Read https://cambio.raphaelsalaja.com/, I want to ask questions about it.`;
+const query = `Please read the documentation at https://cambio.raphaelsalaja.com/llms.txt and help me understand how to use the Cambio React component library. I have questions about implementation, configuration, and best practices.`;
 
 interface MenuProps {
   content: string;
@@ -55,7 +55,7 @@ export function Menu({ content }: MenuProps) {
                 <a
                   target="_blank"
                   rel="noopener noreferrer"
-                  href="https://github.com/raphaelsalaja"
+                  href="https://github.com/raphaelsalaja/cambio"
                 >
                   Github
                 </a>
@@ -106,7 +106,7 @@ export function Menu({ content }: MenuProps) {
                 <a
                   target="_blank"
                   rel="noopener noreferrer"
-                  href="https://raw.githubusercontent.com/raphaelsalaja/cambio/refs/heads/main/website/content/documentation.mdx"
+                  href="https://cambio.raphaelsalaja.com/llms.txt"
                 >
                   View as Markdown
                 </a>
