@@ -11,7 +11,7 @@ import { useState } from "react";
 import { Check, Dots } from "../icons";
 import styles from "./styles.module.css";
 
-const query = `Please read the documentation at https://cambio.raphaelsalaja.com/llms.txt and help me understand how to use the Cambio React component library. I have questions about implementation, configuration, and best practices.`;
+const query = `Read https://cambio.raphaelsalaja.com/llms.txt. I want to ask questions about it.`;
 
 interface MenuProps {
   content: string;
