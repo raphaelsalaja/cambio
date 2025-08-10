@@ -83,9 +83,10 @@ jobs:
             pnpm add cambio@${{ env.NEW_VERSION }}
             ```
 
-            ### Links
-            - 📦 [npm](https://www.npmjs.com/package/cambio)
-            - 📖 [x(twitter)](https://x.com/raphaelsalaja)
+            ---
+
+            - [npm](https://www.npmjs.com/package/cambio)
+            - [x(twitter)](https://x.com/raphaelsalaja)
           generate_release_notes: true
           draft: false
           prerelease: false
