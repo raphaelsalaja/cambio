@@ -74,7 +74,7 @@ jobs:
         uses: softprops/action-gh-release@v1
         with:
           tag_name: v${{ env.NEW_VERSION }}
-          name: Release v${{ env.NEW_VERSION }}
+          name: v${{ env.NEW_VERSION }}
           body: |
             ## What's Changed in v${{ env.NEW_VERSION }}
 
@@ -84,8 +84,8 @@ jobs:
             ```
 
             ### Links
-            - 📦 [npm package](https://www.npmjs.com/package/cambio/v/${{ env.NEW_VERSION }})
-            - 📖 [Documentation](https://github.com/raphaelsalaja/cambio#readme)
+            - 📦 [npm](https://www.npmjs.com/package/cambio)
+            - 📖 [x(twitter)](https://x.com/raphaelsalaja)
           generate_release_notes: true
           draft: false
           prerelease: false
