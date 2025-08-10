@@ -10,8 +10,6 @@ By eliminating boilerplate code, it streamlines both implementation and maintena
 Built on [Base UI's](https://base-ui.com/) accessible primitives and [Motion's](https://motion.dev/) powerful animation library,
 Cambio ensures your animations are both performant and inclusive by default.
 
----
-
 # Installation
 
 ```bash
@@ -39,8 +37,6 @@ To make portalled components always appear on top of the entire page, add the fo
 
 For more information, see the [Base UI Documentation](https://base-ui.com/react/overview/quick-start#set-up-portals).
 
----
-
 # Usage
 
 It can be used anywhere in your application as follows.
@@ -65,8 +61,6 @@ export default function Lightbox() {
 
 For complete code examples, refer to the [examples directory](https://github.com/raphaelsalaja/cambio/tree/main/website/components/examples).
 
----
-
 # Motion
 
 Cambio leverages the power of [Motion](https://motion.dev/) to provide a seamless animation experience.
@@ -79,8 +73,6 @@ This saves having to create a `<motion.div/>` for each component.
 </Cambio.Popup>
 ```
 
----
-
 # Dismissability
 
 Cambio also supports dismissible popups, allowing users to easily close the popup by dragging on the popup. This prop is completely optional, so if you don't need this behavior, you can simply omit it.
@@ -88,8 +80,6 @@ Cambio also supports dismissible popups, allowing users to easily close the popu
 ```tsx lineNumbers
 <Cambio.Popup dismissable>{/* Your Content */}</Cambio.Popup>
 ```
-
----
 
 # What Sets Cambio Apart
 
@@ -100,8 +90,6 @@ Other libraries cater mainly towards image/video zooming. Cambio is not limited 
 This means you can create expanded states, draggable elements, and interactions that feel natural, all while maintaining accessibility for every user.
 
 What you can create with it, is limited only by your imagination.
-
----
 
 # Support
 
