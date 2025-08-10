@@ -1,8 +1,16 @@
 # Cambio
 
-Cambio simplifies shared animations in React by removing the complexity that many developers face when setting up these interactions. By eliminating boilerplate code, it streamlines both implementation and maintenance workflows.
+# Introduction
 
-Built on [Base UI's](https://base-ui.com/) accessible primitives and [Motion's](https://motion.dev/) powerful animation library, Cambio ensures your animations are both performant and inclusive by default.
+Cambio is a simple shared animation component for React.
+
+Cambio simplifies shared animations in React by removing the complexity that many developers face when setting up these interactions.
+By eliminating boilerplate code, it streamlines both implementation and maintenance workflows.
+
+Built on [Base UI's](https://base-ui.com/) accessible primitives and [Motion's](https://motion.dev/) powerful animation library,
+Cambio ensures your animations are both performant and inclusive by default.
+
+---
 
 # Installation
 
@@ -10,16 +18,39 @@ Built on [Base UI's](https://base-ui.com/) accessible primitives and [Motion's](
 pnpm add cambio
 ```
 
+# Setup
+
+Cambio leverages Base UI's Dialog component to render popups outside of the main DOM hierarchy.
+To make portalled components always appear on top of the entire page, add the following style to your application layout root.
+
+```tsx
+// layout.tsx
+<body>
+  <div className="root">
+    {children}
+  </div>
+</body>
+
+// styles.css
+.root {
+  isolation: isolate;
+}
+```
+
+For more information, see the [Base UI Documentation](https://base-ui.com/react/overview/quick-start#set-up-portals).
+
+---
+
 # Usage
 
 It can be used anywhere in your application as follows.
 
-```tsx
+```tsx lineNumbers
 "use client";
 
 import { Cambio } from "cambio";
 
-export default function Example() {
+export default function Lightbox() {
   return (
     <Cambio.Root>
       <Cambio.Trigger>{/* Your Content */}</Cambio.Trigger>
@@ -32,30 +63,45 @@ export default function Example() {
 }
 ```
 
+For complete code examples, refer to the [examples directory](https://github.com/raphaelsalaja/cambio/tree/main/website/components/examples).
+
+---
+
 # Motion
 
 Cambio leverages the power of [Motion](https://motion.dev/) to provide a seamless animation experience.
 For example you can easily add your own transitions by passing a `transition` prop to any of the components.
-
 This saves having to create a `<motion.div/>` for each component.
 
-```tsx
+```tsx lineNumbers
 <Cambio.Popup transition={{ type: "spring", bounce: 0.2, duration: 0.4 }}>
   {/* Your Content */}
 </Cambio.Popup>
 ```
 
+---
+
 # Dismissability
 
 Cambio also supports dismissible popups, allowing users to easily close the popup by dragging on the popup. This prop is completely optional, so if you don't need this behavior, you can simply omit it.
 
-<center>
-  <Dismissable />
-</center>
-
-```tsx
+```tsx lineNumbers
 <Cambio.Popup dismissable>{/* Your Content */}</Cambio.Popup>
 ```
+
+---
+
+# What Sets Cambio Apart
+
+Cambio offers a unique combination of simplicity, accessibility, and powerful animation capabilities that sets it apart from other libraries.
+
+Other libraries cater mainly towards image/video zooming. Cambio is not limited to do this. It's powered by [Motion](https://motion.dev/) and [Base UI](https://base-ui.com/) which provides a more comprehensive solution for building shared animations in React applications.
+
+This means you can create expanded states, draggable elements, and interactions that feel natural, all while maintaining accessibility for every user.
+
+What you can create with it, is limited only by your imagination.
+
+---
 
 # Support
 
