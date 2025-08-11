@@ -19,17 +19,15 @@ export const Popup = React.forwardRef<HTMLDivElement, CambioPopupProps>(
 
     const dragY = useMotionValue(0);
 
-    const springX = useSpring(dragX, {
+    const dragSpringConfig = motionConfig.drag || {
       stiffness: 400,
       damping: 30,
       restDelta: 0.01,
-    });
+    };
 
-    const springY = useSpring(dragY, {
-      stiffness: 400,
-      damping: 30,
-      restDelta: 0.01,
-    });
+    const springX = useSpring(dragX, dragSpringConfig);
+
+    const springY = useSpring(dragY, dragSpringConfig);
 
     const distance = useTransform(
       [springX, springY],

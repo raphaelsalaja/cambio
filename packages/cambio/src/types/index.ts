@@ -9,6 +9,11 @@ export type MotionPreset = "snappy" | "smooth" | "bouncy" | "reduced";
 
 export interface MotionConfig {
   transition: Transition;
+  drag?: {
+    stiffness: number;
+    damping: number;
+    restDelta: number;
+  };
 }
 
 export interface CambioContextProps {
