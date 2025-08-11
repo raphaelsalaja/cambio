@@ -1,0 +1,11 @@
+#!/usr/bin/env sh
+
+if git diff --cached --name-only | grep -q "website/content/documentation.mdx"; then
+    SCRIPT_OUTPUT=$(npx tsx scripts/documentation.ts)
+    
+    UPDATED_FILES=$(echo "$SCRIPT_OUTPUT" | tail -n 1)
+    
+    if [ -n "$UPDATED_FILES" ] && [ "$UPDATED_FILES" != "○ Syncing Documentation" ]; then
+        echo "$UPDATED_FILES" | xargs git add
+    fi
+fi

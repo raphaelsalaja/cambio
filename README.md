@@ -1,7 +1,5 @@
 # Cambio
 
-# Introduction
-
 Cambio is a simple shared animation component for React.
 
 Cambio simplifies shared animations in React by removing the complexity that many developers face when setting up these interactions.
@@ -69,6 +67,34 @@ This saves having to create a `<motion.div/>` for each component.
 
 ```tsx lineNumbers
 <Cambio.Popup transition={{ type: "spring", bounce: 0.2, duration: 0.4 }} />
+```
+
+# Presets
+
+Cambio includes built-in motion presets that provide consistent animation experiences across your application. You can configure the motion preset at the root level:
+
+# Snappy
+
+Fast ease-out animations (~240ms) for quick, responsive interactions.
+
+```tsx lineNumbers
+<Cambio.Root motion="snappy" />
+```
+
+# Smooth
+
+Default ease-in-out animations (~240ms) for balanced motion.
+
+```tsx lineNumbers
+<Cambio.Root motion="smooth" />
+```
+
+# Bouncy
+
+Spring animations with overshoot for playful, organic movement.
+
+```tsx lineNumbers
+<Cambio.Root motion="bouncy" />
 ```
 
 # Dismissability
