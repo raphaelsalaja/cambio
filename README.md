@@ -73,6 +73,50 @@ This saves having to create a `<motion.div/>` for each component.
 
 Cambio includes built-in motion presets that provide consistent animation experiences across your application. You can configure the motion preset at the root level:
 
+## Global Motion Presets
+
+Set motion globally for all components:
+
+```tsx lineNumbers
+<Cambio.Root motion="snappy" />
+```
+
+## Motion Variants
+
+Configure different motion presets for different components:
+
+```tsx lineNumbers
+<Cambio.Root
+  motion={{
+    trigger: "snappy",
+    popup: "bouncy",
+    backdrop: "smooth",
+  }}
+>
+  <Cambio.Trigger>{/* Uses snappy motion */}</Cambio.Trigger>
+  <Cambio.Portal>
+    <Cambio.Backdrop />
+    {/* Uses smooth motion */}
+    <Cambio.Popup>{/* Uses bouncy motion */}</Cambio.Popup>
+  </Cambio.Portal>
+</Cambio.Root>
+```
+
+## Component-Level Motion Override
+
+Override motion for individual components:
+
+```tsx lineNumbers
+<Cambio.Root motion="smooth">
+  <Cambio.Trigger motion="snappy">{/* Overrides to snappy */}</Cambio.Trigger>
+  <Cambio.Portal>
+    <Cambio.Backdrop motion="reduced" />
+    {/* Overrides to reduced */}
+    <Cambio.Popup motion="bouncy">{/* Overrides to bouncy */}</Cambio.Popup>
+  </Cambio.Portal>
+</Cambio.Root>
+```
+
 # Snappy
 
 Fast ease-out animations (~240ms) for quick, responsive interactions.
@@ -99,10 +143,35 @@ Spring animations with overshoot for playful, organic movement.
 
 # Dismissability
 
-Cambio also supports dismissible popups, allowing users to easily close the popup by dragging on the popup. This prop is completely optional, so if you don't need this behavior, you can simply omit it.
+Cambio supports dismissible popups, allowing users to easily close the popup by dragging. You can configure this behavior at the root level or override it per component.
 
-```tsx
-<Cambio.Popup dismissable />
+## Root-Level Configuration
+
+Configure dismissable behavior globally:
+
+```tsx lineNumbers
+<Cambio.Root dismissable>
+  <Cambio.Trigger>{/* Your Content */}</Cambio.Trigger>
+  <Cambio.Portal>
+    <Cambio.Backdrop />
+    <Cambio.Popup>{/* Your Content */}</Cambio.Popup>
+  </Cambio.Portal>
+</Cambio.Root>
+```
+
+## Advanced Configuration
+
+Customize dismissal sensitivity:
+
+```tsx lineNumbers
+<Cambio.Root
+  dismissable={{
+    threshold: 120, // Distance threshold in pixels
+    velocity: 600, // Velocity threshold in pixels/second
+  }}
+>
+  <Cambio.Popup>{/* Your Content */}</Cambio.Popup>
+</Cambio.Root>
 ```
 
 The drag resistance will also respect the current motion preset. This can also be configured at the root level.

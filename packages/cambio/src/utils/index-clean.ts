@@ -209,3 +209,22 @@ export function resolveDismissableConfig(
     ...dismissable,
   };
 }
+
+/**
+ * Get the effective dismissable configuration for a component
+ * @param componentDismissable - Component-level dismissable override
+ * @param rootDismissable - Root-level dismissable configuration
+ * @returns The final dismissable configuration to use
+ */
+export function getEffectiveDismissableConfig(
+  componentDismissable?: DismissableValue,
+  rootDismissable?: DismissableValue,
+): DismissableConfig | null {
+  // Component-level override takes priority
+  if (componentDismissable !== undefined) {
+    return resolveDismissableConfig(componentDismissable);
+  }
+
+  // Fall back to root-level configuration
+  return resolveDismissableConfig(rootDismissable);
+}

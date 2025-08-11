@@ -6,7 +6,7 @@ import styles from "../styles.module.css";
 
 export function Dismissable() {
   return (
-    <Cambio.Root motion="bouncy">
+    <Cambio.Root dismissable motion="bouncy">
       <Cambio.Trigger className={styles.trigger}>
         <Image
           fill
@@ -19,7 +19,7 @@ export function Dismissable() {
       </Cambio.Trigger>
       <Cambio.Portal>
         <Cambio.Backdrop className={styles.backdrop} />
-        <Cambio.Popup dismissable className={styles.popup}>
+        <Cambio.Popup className={styles.popup}>
           <Image
             fill
             unoptimized
