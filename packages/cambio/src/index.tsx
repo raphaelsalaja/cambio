@@ -2,9 +2,19 @@
 
 export { CambioContext, useCambioContext } from "./context";
 
-export type { CambioContextProps } from "./types";
+export type {
+  CambioContextProps,
+  MotionConfig,
+  MotionPreset,
+} from "./types";
 
-export { getReducedMotionState, useReducedMotion } from "./utils";
+export {
+  getMotionConfig,
+  getReducedMotionState,
+  MOTION_PRESETS,
+  resolveMotionPreset,
+  useReducedMotion,
+} from "./utils";
 
 import * as Components from "./components";
 

@@ -8,13 +8,9 @@ import type { CambioBackdropProps } from "../../types";
 
 export const Backdrop = React.forwardRef<HTMLDivElement, CambioBackdropProps>(
   function Backdrop(props, ref) {
-    const { layoutId, open } = useCambioContext();
+    const { layoutId, open, motionConfig } = useCambioContext();
     const {
-      transition = {
-        ease: [0.19, 1, 0.22, 1],
-        duration: 0.6,
-        delay: 0.2,
-      },
+      transition = motionConfig.enter,
       initial = {
         opacity: 0,
       },
@@ -23,6 +19,7 @@ export const Backdrop = React.forwardRef<HTMLDivElement, CambioBackdropProps>(
       },
       exit = {
         opacity: 0,
+        transition: motionConfig.exit,
       },
     } = props;
 
