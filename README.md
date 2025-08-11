@@ -81,6 +81,10 @@ Cambio also supports dismissible popups, allowing users to easily close the popu
 <Cambio.Popup dismissable>{/* Your Content */}</Cambio.Popup>
 ```
 
+# Accessibility & Reduced Motion
+
+Cambio respects user accessibility preferences, specifically the `prefers-reduced-motion` media query. By default, Cambio automatically detects and respects this system preference to provide a more accessible experience for users who prefer reduced motion.
+
 # What Sets Cambio Apart
 
 Cambio offers a unique combination of simplicity, accessibility, and powerful animation capabilities that sets it apart from other libraries.

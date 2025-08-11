@@ -8,12 +8,14 @@ export interface CambioContextProps {
   open: boolean;
   layoutId: string;
   onOpenChange?: (open: boolean) => void;
+  reduceMotion: boolean;
 }
 
 export interface CambioRootProps
   extends React.ComponentPropsWithoutRef<typeof MotionDialog.Root> {
   layoutId?: string;
   onOpenChange?: (open: boolean) => void;
+  reduceMotion?: boolean;
 }
 
 export interface CambioTriggerProps

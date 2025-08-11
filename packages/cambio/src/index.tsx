@@ -4,6 +4,8 @@ export { CambioContext, useCambioContext } from "./context";
 
 export type { CambioContextProps } from "./types";
 
+export { getReducedMotionState, useReducedMotion } from "./utils";
+
 import * as Components from "./components";
 
 export const Cambio = {
