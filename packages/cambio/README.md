@@ -73,15 +73,11 @@ This saves having to create a `<motion.div/>` for each component.
 
 Cambio includes built-in motion presets that provide consistent animation experiences across your application. You can configure the motion preset at the root level:
 
-## Global Motion Presets
-
-Set motion globally for all components:
-
 ```tsx lineNumbers
 <Cambio.Root motion="snappy" />
 ```
 
-## Motion Variants
+# Variants
 
 Configure different motion presets for different components:
 
@@ -102,7 +98,7 @@ Configure different motion presets for different components:
 </Cambio.Root>
 ```
 
-# Component-Level Motion Override
+# Overrides
 
 Override motion for individual components. Component-level motion takes the highest priority, followed by motion variants, then global motion settings:
 
@@ -166,7 +162,7 @@ Customize dismissal sensitivity:
 
 The drag resistance will also respect the current motion preset. This can also be configured at the root level.
 
-# Accessibility & Reduced Motion
+# Accessibility
 
 Cambio respects user accessibility preferences, specifically the `prefers-reduced-motion` media query. By default, Cambio automatically detects and respects this system preference to provide a more accessible experience for users who prefer reduced motion.
 
@@ -174,7 +170,7 @@ Cambio respects user accessibility preferences, specifically the `prefers-reduce
 <Cambio.Root reduceMotion={true} />
 ```
 
-# What Sets Cambio Apart
+# Why Cambio?
 
 Cambio offers a unique combination of simplicity, accessibility, and powerful animation capabilities that sets it apart from other libraries.
 
