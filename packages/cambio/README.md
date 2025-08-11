@@ -150,12 +150,7 @@ Cambio supports dismissible popups, allowing users to easily close the popup by 
 Customize dismissal sensitivity:
 
 ```tsx lineNumbers
-<Cambio.Root
-  dismissible={{
-    threshold: 120,
-    velocity: 600,
-  }}
->
+<Cambio.Root dismissible={{ threshold: 120, velocity: 600 }}>
   <Cambio.Popup />
 </Cambio.Root>
 ```

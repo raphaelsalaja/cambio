@@ -1,33 +1,20 @@
 "use client";
 
 import { Cambio } from "cambio";
-import Image from "next/image";
+import { Image } from "@/components/image";
+
 import styles from "../styles.module.css";
 
 export function Reduced() {
   return (
     <Cambio.Root reduceMotion={true}>
       <Cambio.Trigger className={styles.trigger}>
-        <Image
-          fill
-          unoptimized
-          loading="eager"
-          alt={"Reduced Motion Example"}
-          className={styles.image}
-          src={"/basic.jpg"}
-        />
+        <Image variant="reduced" />
       </Cambio.Trigger>
       <Cambio.Portal>
         <Cambio.Backdrop className={styles.backdrop} />
         <Cambio.Popup className={styles.popup}>
-          <Image
-            fill
-            unoptimized
-            loading="eager"
-            alt={"Reduced Motion Example"}
-            className={styles.image}
-            src={"/basic.jpg"}
-          />
+          <Image variant="reduced" />
         </Cambio.Popup>
       </Cambio.Portal>
     </Cambio.Root>

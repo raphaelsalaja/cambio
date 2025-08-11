@@ -28,10 +28,6 @@
   z-index: 100000;
   aspect-ratio: 3 / 2;
   overflow: hidden;
-  border-radius: 4px;
-}
-
-.image {
-  pointer-events: none;
-  object-fit: cover;
+  background: var(--leaf);
+  border-radius: 8px;
 }
