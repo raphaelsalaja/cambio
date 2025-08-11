@@ -1,7 +1,5 @@
 # Cambio
 
-# Introduction
-
 Cambio is a simple shared animation component for React.
 
 Cambio simplifies shared animations in React by removing the complexity that many developers face when setting up these interactions.
@@ -68,32 +66,36 @@ For example you can easily add your own transitions by passing a `transition` pr
 This saves having to create a `<motion.div/>` for each component.
 
 ```tsx lineNumbers
-<Cambio.Popup transition={{ type: "spring", bounce: 0.2, duration: 0.4 }}>
-  {/* Your Content */}
-</Cambio.Popup>
+<Cambio.Popup transition={{ type: "spring", bounce: 0.2, duration: 0.4 }} />
 ```
 
-## Motion Presets
+# Presets
 
 Cambio includes built-in motion presets that provide consistent animation experiences across your application. You can configure the motion preset at the root level:
 
+# Snappy
+
+Fast ease-out animations (~240ms) for quick, responsive interactions.
+
 ```tsx lineNumbers
-<Cambio.Root motion="snappy">{/* Your Components */}</Cambio.Root>
+<Cambio.Root motion="snappy" />
 ```
 
-### Available Presets
+# Smooth
 
-- **`snappy`** - Fast ease-out animations (~240ms) for quick, responsive interactions
-- **`smooth`** - Default ease-in-out animations (~240ms) for balanced motion
-- **`bouncy`** - Spring animations with overshoot for playful, organic movement
-- **`reduced`** - Minimal motion for accessibility, automatically applied when `prefers-reduced-motion: reduce` is detected
+Default ease-in-out animations (~240ms) for balanced motion.
 
-### Default Behavior
+```tsx lineNumbers
+<Cambio.Root motion="smooth" />
+```
 
-- Defaults to `smooth` for optimal user experience
-- Automatically switches to `reduced` if the system setting `prefers-reduced-motion: reduce` is detected
-- Can be explicitly overridden by setting `motion` on the root component
-- Respects the `reduceMotion` prop for manual control
+# Bouncy
+
+Spring animations with overshoot for playful, organic movement.
+
+```tsx lineNumbers
+<Cambio.Root motion="bouncy" />
+```
 
 # Dismissability
 

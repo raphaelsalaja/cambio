@@ -1,0 +1,7 @@
+#!/usr/bin/env sh
+
+# Check if documentation.mdx has been modified
+if git diff --cached --name-only | grep -q "website/content/documentation.mdx"; then
+    npx tsx scripts/documentation.ts
+    git add README.md packages/cambio/README.md website/public/llms.txt
+fi
