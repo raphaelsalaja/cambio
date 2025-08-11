@@ -102,8 +102,10 @@ Spring animations with overshoot for playful, organic movement.
 Cambio also supports dismissible popups, allowing users to easily close the popup by dragging on the popup. This prop is completely optional, so if you don't need this behavior, you can simply omit it.
 
 ```tsx
-<Cambio.Popup dismissable>{/* Your Content */}</Cambio.Popup>
+<Cambio.Popup dismissable />
 ```
+
+The drag resistance will also respect the current motion preset. This can also be configured at the root level.
 
 # Accessibility & Reduced Motion
 

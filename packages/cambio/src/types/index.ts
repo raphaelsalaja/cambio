@@ -21,7 +21,7 @@ export interface CambioContextProps {
   layoutId: string;
   onOpenChange?: (open: boolean) => void;
   reduceMotion: boolean;
-  motion: MotionPreset;
+  motion: MotionPreset | MotionConfig;
   motionConfig: MotionConfig;
 }
 
@@ -30,7 +30,7 @@ export interface CambioRootProps
   layoutId?: string;
   onOpenChange?: (open: boolean) => void;
   reduceMotion?: boolean;
-  motion?: MotionPreset;
+  motion?: MotionPreset | MotionConfig;
 }
 
 export interface CambioTriggerProps

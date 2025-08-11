@@ -29,14 +29,8 @@ export const Root = forwardRef<HTMLDivElement, CambioRootProps>(
 
     const isOpen = open ?? openState;
     const shouldReduceMotion = getReducedMotionState(reduceMotion);
-    const resolvedMotionPreset = resolveMotionPreset(
-      motion,
-      shouldReduceMotion,
-    );
-    const motionConfig = getMotionConfig(
-      resolvedMotionPreset,
-      shouldReduceMotion,
-    );
+    const resolvedMotion = resolveMotionPreset(motion, shouldReduceMotion);
+    const motionConfig = getMotionConfig(resolvedMotion, shouldReduceMotion);
 
     const handleChange = useCallback(
       (next: boolean, _e?: Event, _reason?: unknown) => {
@@ -56,7 +50,7 @@ export const Root = forwardRef<HTMLDivElement, CambioRootProps>(
           open: isOpen,
           onOpenChange: (next) => handleChange(next),
           reduceMotion: shouldReduceMotion,
-          motion: resolvedMotionPreset,
+          motion: resolvedMotion,
           motionConfig,
         }}
       >
