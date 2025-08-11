@@ -17,7 +17,6 @@ export const Backdrop = React.forwardRef<HTMLDivElement, CambioBackdropProps>(
       reduceMotion,
     } = useCambioContext();
 
-    // Resolve the motion preset for this component
     const resolvedMotion = getComponentMotionPreset(
       "backdrop",
       componentMotion,
@@ -26,7 +25,6 @@ export const Backdrop = React.forwardRef<HTMLDivElement, CambioBackdropProps>(
       reduceMotion,
     );
 
-    // Get the motion config for the resolved preset
     const componentMotionConfig = getMotionConfig(resolvedMotion, reduceMotion);
 
     const {

@@ -18,7 +18,6 @@ export const Trigger = React.memo(
       reduceMotion,
     } = useCambioContext();
 
-    // Resolve the motion preset for this component
     const resolvedMotion = getComponentMotionPreset(
       "trigger",
       componentMotion,
@@ -27,7 +26,6 @@ export const Trigger = React.memo(
       reduceMotion,
     );
 
-    // Get the motion config for the resolved preset
     const componentMotionConfig = getMotionConfig(resolvedMotion, reduceMotion);
 
     const { transition = componentMotionConfig.transition } = props;

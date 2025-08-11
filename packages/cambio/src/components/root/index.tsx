@@ -32,7 +32,6 @@ export const Root = forwardRef<HTMLDivElement, CambioRootProps>(
     const isOpen = open ?? openState;
     const shouldReduceMotion = getReducedMotionState(reduceMotion);
 
-    // Parse motion configuration into preset and variants
     const { preset, variants } = parseMotionConfig(motion);
     const resolvedMotionPreset = resolveMotionPreset(
       preset,

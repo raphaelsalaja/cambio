@@ -105,7 +105,7 @@ export function parseMotionConfig(motion?: MotionConfigValue): {
 
   if (typeof motion === "object") {
     return {
-      preset: "smooth", // Default preset when using variants
+      preset: "smooth",
       variants: motion,
     };
   }
@@ -133,17 +133,14 @@ export function getComponentMotionPreset(
     return "reduced";
   }
 
-  // Component-level override takes highest priority
   if (componentMotion) {
     return componentMotion;
   }
 
-  // Then check if there's a variant for this component type
   if (variants?.[componentType]) {
     return variants[componentType] as MotionPreset;
   }
 
-  // Fall back to global motion preset
   return globalMotion ?? "smooth";
 }
 
@@ -175,7 +172,6 @@ export function useReducedMotion(): boolean {
     const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
     const handleChange = () => setReducedMotion(mediaQuery.matches);
 
-    // Support both modern and legacy browsers
     if (mediaQuery.addEventListener) {
       mediaQuery.addEventListener("change", handleChange);
     } else {
