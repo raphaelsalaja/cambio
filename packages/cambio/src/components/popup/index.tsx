@@ -22,6 +22,14 @@ const DEFAULT_DRAG_SPRING_CONFIG = {
   restDelta: 0.01,
 };
 
+const SCALE_DISTANCE_THRESHOLDS = [0, 50, 100];
+const SCALE_OUTPUT_VALUES = [1, 0.98, 0.95];
+const POPUP_OPACITY_DISTANCE_RANGE = [0, 80];
+const POPUP_OPACITY_OUTPUT_RANGE = [1, 0.96];
+
+const RESISTANCE_DISTANCE_DIVISOR = 20;
+const RESISTANCE_LOG_DIVISOR = 4;
+
 export const Popup = React.forwardRef<HTMLDivElement, CambioPopupProps>(
   function Popup({ motion: componentMotion, ...props }, ref) {
     const {
@@ -62,11 +70,24 @@ export const Popup = React.forwardRef<HTMLDivElement, CambioPopupProps>(
       ([x, y]: [number, number]) => Math.hypot(x, y),
     );
 
-    const scale = useTransform(distance, [0, 50, 100], [1, 0.98, 0.95]);
-    const opacity = useTransform(distance, [0, 80], [1, 0.96]);
+    const scale = useTransform(
+      distance,
+      SCALE_DISTANCE_THRESHOLDS,
+      SCALE_OUTPUT_VALUES,
+    );
+    const opacity = useTransform(
+      distance,
+      POPUP_OPACITY_DISTANCE_RANGE,
+      POPUP_OPACITY_OUTPUT_RANGE,
+    );
 
     const resistance = useTransform(distance, (d) =>
-      Math.max(0.1, 1 - Math.log(d / 20 + 1) / 4),
+      Math.max(
+        0.1,
+        1 -
+          Math.log(d / RESISTANCE_DISTANCE_DIVISOR + 1) /
+            RESISTANCE_LOG_DIVISOR,
+      ),
     );
 
     const dragConfig = useMemo(() => {
