@@ -73,6 +73,28 @@ This saves having to create a `<motion.div/>` for each component.
 </Cambio.Popup>
 ```
 
+## Motion Presets
+
+Cambio includes built-in motion presets that provide consistent animation experiences across your application. You can configure the motion preset at the root level:
+
+```tsx lineNumbers
+<Cambio.Root motion="snappy">{/* Your Components */}</Cambio.Root>
+```
+
+### Available Presets
+
+- **`snappy`** - Fast ease-out animations (~240ms) for quick, responsive interactions
+- **`smooth`** - Default ease-in-out animations (~240ms) for balanced motion
+- **`bouncy`** - Spring animations with overshoot for playful, organic movement
+- **`reduced`** - Minimal motion for accessibility, automatically applied when `prefers-reduced-motion: reduce` is detected
+
+### Default Behavior
+
+- Defaults to `smooth` for optimal user experience
+- Automatically switches to `reduced` if the system setting `prefers-reduced-motion: reduce` is detected
+- Can be explicitly overridden by setting `motion` on the root component
+- Respects the `reduceMotion` prop for manual control
+
 # Dismissability
 
 Cambio also supports dismissible popups, allowing users to easily close the popup by dragging on the popup. This prop is completely optional, so if you don't need this behavior, you can simply omit it.

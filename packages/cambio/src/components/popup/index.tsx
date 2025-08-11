@@ -8,7 +8,7 @@ import type { CambioPopupProps, MotionDraggableProps } from "../../types";
 
 export const Popup = React.forwardRef<HTMLDivElement, CambioPopupProps>(
   function Popup({ dismissable, ...props }, ref) {
-    const { layoutId, open, onOpenChange } = useCambioContext();
+    const { layoutId, open, onOpenChange, motionConfig } = useCambioContext();
 
     const dragging: MotionDraggableProps = useMemo(() => {
       if (!dismissable) return {};
@@ -33,6 +33,8 @@ export const Popup = React.forwardRef<HTMLDivElement, CambioPopupProps>(
       };
     }, [dismissable, onOpenChange]);
 
+    const { transition = motionConfig.transition } = props;
+
     return (
       <AnimatePresence>
         {open && (
@@ -42,6 +44,8 @@ export const Popup = React.forwardRef<HTMLDivElement, CambioPopupProps>(
             ref={ref}
             layoutId={layoutId}
             layoutCrossfade={false}
+            layout
+            transition={transition}
             style={{
               position: "fixed",
               top: "50%",

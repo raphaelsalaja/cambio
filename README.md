@@ -68,9 +68,7 @@ For example you can easily add your own transitions by passing a `transition` pr
 This saves having to create a `<motion.div/>` for each component.
 
 ```tsx lineNumbers
-<Cambio.Popup transition={{ type: "spring", bounce: 0.2, duration: 0.4 }}>
-  {/* Your Content */}
-</Cambio.Popup>
+<Cambio.Popup transition={{ type: "spring", bounce: 0.2, duration: 0.4 }} />
 ```
 
 # Dismissability

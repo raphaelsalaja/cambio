@@ -1,14 +1,23 @@
 import type {
   MotionNodeDraggableOptions,
   MotionNodeDragHandlers,
+  Transition,
 } from "motion/react";
 import type { MotionDialog } from "../motion";
+
+export type MotionPreset = "snappy" | "smooth" | "bouncy" | "reduced";
+
+export interface MotionConfig {
+  transition: Transition;
+}
 
 export interface CambioContextProps {
   open: boolean;
   layoutId: string;
   onOpenChange?: (open: boolean) => void;
   reduceMotion: boolean;
+  motion: MotionPreset;
+  motionConfig: MotionConfig;
 }
 
 export interface CambioRootProps
@@ -16,6 +25,7 @@ export interface CambioRootProps
   layoutId?: string;
   onOpenChange?: (open: boolean) => void;
   reduceMotion?: boolean;
+  motion?: MotionPreset;
 }
 
 export interface CambioTriggerProps

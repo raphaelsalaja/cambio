@@ -5,7 +5,11 @@ import React, { forwardRef, useCallback, useId, useState } from "react";
 import { CambioContext } from "../../context";
 import { MotionDialog } from "../../motion";
 import type { CambioRootProps } from "../../types";
-import { getReducedMotionState } from "../../utils";
+import {
+  getMotionConfig,
+  getReducedMotionState,
+  resolveMotionPreset,
+} from "../../utils";
 
 export const Root = forwardRef<HTMLDivElement, CambioRootProps>(
   function Root(props, _ref) {
@@ -17,6 +21,7 @@ export const Root = forwardRef<HTMLDivElement, CambioRootProps>(
       defaultOpen = false,
       layoutId = `cambio-dialog-${generatedId}`,
       reduceMotion,
+      motion,
       ...rest
     } = props;
 
@@ -24,6 +29,14 @@ export const Root = forwardRef<HTMLDivElement, CambioRootProps>(
 
     const isOpen = open ?? openState;
     const shouldReduceMotion = getReducedMotionState(reduceMotion);
+    const resolvedMotionPreset = resolveMotionPreset(
+      motion,
+      shouldReduceMotion,
+    );
+    const motionConfig = getMotionConfig(
+      resolvedMotionPreset,
+      shouldReduceMotion,
+    );
 
     const handleChange = useCallback(
       (next: boolean, _e?: Event, _reason?: unknown) => {
@@ -43,6 +56,8 @@ export const Root = forwardRef<HTMLDivElement, CambioRootProps>(
           open: isOpen,
           onOpenChange: (next) => handleChange(next),
           reduceMotion: shouldReduceMotion,
+          motion: resolvedMotionPreset,
+          motionConfig,
         }}
       >
         <MotionDialog.Root

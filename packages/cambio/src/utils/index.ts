@@ -1,4 +1,67 @@
 import { useEffect, useState } from "react";
+import type { MotionConfig, MotionPreset } from "../types";
+
+export const MOTION_PRESETS: Record<MotionPreset, MotionConfig> = {
+  snappy: {
+    transition: {
+      ease: [0.19, 1, 0.22, 1],
+      duration: 0.24,
+    },
+  },
+  smooth: {
+    transition: {
+      ease: [0.42, 0, 0.58, 1],
+      duration: 0.3,
+    },
+  },
+  bouncy: {
+    transition: {
+      type: "spring",
+      stiffness: 1200,
+      damping: 80,
+      mass: 4,
+    },
+  },
+  reduced: {
+    transition: {
+      ease: "linear",
+      duration: 0.01,
+    },
+  },
+};
+
+/**
+ * Get motion configuration for a given preset
+ * @param preset - The motion preset to use
+ * @param forceReduced - Whether to force reduced motion regardless of preset
+ * @returns MotionConfig with enter and exit transitions
+ */
+export function getMotionConfig(
+  preset: MotionPreset,
+  forceReduced: boolean = false,
+): MotionConfig {
+  if (forceReduced) {
+    return MOTION_PRESETS.reduced;
+  }
+  return MOTION_PRESETS[preset];
+}
+
+/**
+ * Resolve the motion preset based on user preference and system settings
+ * @param motion - Override preset or undefined to use default
+ * @param reduceMotion - Whether reduced motion is preferred
+ * @returns The resolved motion preset
+ */
+export function resolveMotionPreset(
+  motion?: MotionPreset,
+  reduceMotion: boolean = false,
+): MotionPreset {
+  if (reduceMotion && !motion) {
+    return "reduced";
+  }
+
+  return motion ?? "smooth";
+}
 
 /**
  * Helper function to check if user prefers reduced motion

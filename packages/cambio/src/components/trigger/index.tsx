@@ -8,15 +8,8 @@ import type { CambioTriggerProps } from "../../types";
 export const Trigger = React.memo(
   React.forwardRef<HTMLButtonElement, CambioTriggerProps>(
     function Trigger(props, ref) {
-      const { layoutId } = useCambioContext();
-
-      const {
-        transition = {
-          type: "spring",
-          bounce: 0.2,
-          duration: 0.4,
-        },
-      } = props;
+      const { layoutId, motionConfig } = useCambioContext();
+      const { transition = motionConfig.transition } = props;
 
       return (
         <MotionDialog.Trigger
