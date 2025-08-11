@@ -9,13 +9,7 @@ export const Trigger = React.memo(
   React.forwardRef<HTMLButtonElement, CambioTriggerProps>(
     function Trigger(props, ref) {
       const { layoutId, motionConfig } = useCambioContext();
-
-      const {
-        transition = {
-          layout: motionConfig.enter,
-          ...props.transition,
-        },
-      } = props;
+      const { transition = motionConfig.transition } = props;
 
       return (
         <MotionDialog.Trigger

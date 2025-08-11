@@ -33,6 +33,8 @@ export const Popup = React.forwardRef<HTMLDivElement, CambioPopupProps>(
       };
     }, [dismissable, onOpenChange]);
 
+    const { transition = motionConfig.transition } = props;
+
     return (
       <AnimatePresence>
         {open && (
@@ -43,10 +45,7 @@ export const Popup = React.forwardRef<HTMLDivElement, CambioPopupProps>(
             layoutId={layoutId}
             layoutCrossfade={false}
             layout
-            transition={{
-              layout: motionConfig.enter,
-              ...props.transition,
-            }}
+            transition={transition}
             style={{
               position: "fixed",
               top: "50%",

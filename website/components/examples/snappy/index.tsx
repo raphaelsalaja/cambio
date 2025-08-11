@@ -6,7 +6,7 @@ import styles from "../styles.module.css";
 
 export function Snappy() {
   return (
-    <Cambio.Root motionPreset="snappy">
+    <Cambio.Root motion="snappy">
       <Cambio.Trigger className={styles.trigger}>
         <Image
           fill

@@ -1,56 +1,31 @@
 import { useEffect, useState } from "react";
 import type { MotionConfig, MotionPreset } from "../types";
 
-/**
- * Motion preset configurations
- */
 export const MOTION_PRESETS: Record<MotionPreset, MotionConfig> = {
   snappy: {
-    enter: {
-      type: "tween",
-      duration: 0.18,
-      ease: [0.25, 0.46, 0.45, 0.94], // ease-out
-    },
-    exit: {
-      type: "tween",
-      duration: 0.15,
-      ease: [0.55, 0.06, 0.68, 0.19], // ease-in
+    transition: {
+      ease: [0.19, 1, 0.22, 1],
+      duration: 0.24,
     },
   },
   smooth: {
-    enter: {
-      type: "tween",
-      duration: 0.24,
-      ease: [0.42, 0, 0.58, 1], // ease-in-out
-    },
-    exit: {
-      type: "tween",
-      duration: 0.2,
-      ease: [0.42, 0, 0.58, 1], // ease-in-out
+    transition: {
+      ease: [0.42, 0, 0.58, 1],
+      duration: 0.3,
     },
   },
   bouncy: {
-    enter: {
+    transition: {
       type: "spring",
-      bounce: 0.2,
-      duration: 0.4,
-    },
-    exit: {
-      type: "tween",
-      duration: 0.2,
-      ease: [0.42, 0, 0.58, 1], // ease-in-out for exit
+      stiffness: 1200,
+      damping: 80,
+      mass: 4,
     },
   },
   reduced: {
-    enter: {
-      type: "tween",
-      duration: 0.01,
+    transition: {
       ease: "linear",
-    },
-    exit: {
-      type: "tween",
       duration: 0.01,
-      ease: "linear",
     },
   },
 };
@@ -73,21 +48,19 @@ export function getMotionConfig(
 
 /**
  * Resolve the motion preset based on user preference and system settings
- * @param motionPreset - Override preset or undefined to use default
+ * @param motion - Override preset or undefined to use default
  * @param reduceMotion - Whether reduced motion is preferred
  * @returns The resolved motion preset
  */
 export function resolveMotionPreset(
-  motionPreset?: MotionPreset,
+  motion?: MotionPreset,
   reduceMotion: boolean = false,
 ): MotionPreset {
-  // If reduced motion is preferred and no explicit preset override, use reduced
-  if (reduceMotion && !motionPreset) {
+  if (reduceMotion && !motion) {
     return "reduced";
   }
 
-  // Return explicit preset or default to smooth
-  return motionPreset ?? "smooth";
+  return motion ?? "smooth";
 }
 
 /**

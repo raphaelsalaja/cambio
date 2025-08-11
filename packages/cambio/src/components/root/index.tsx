@@ -21,7 +21,7 @@ export const Root = forwardRef<HTMLDivElement, CambioRootProps>(
       defaultOpen = false,
       layoutId = `cambio-dialog-${generatedId}`,
       reduceMotion,
-      motionPreset,
+      motion,
       ...rest
     } = props;
 
@@ -30,7 +30,7 @@ export const Root = forwardRef<HTMLDivElement, CambioRootProps>(
     const isOpen = open ?? openState;
     const shouldReduceMotion = getReducedMotionState(reduceMotion);
     const resolvedMotionPreset = resolveMotionPreset(
-      motionPreset,
+      motion,
       shouldReduceMotion,
     );
     const motionConfig = getMotionConfig(
@@ -56,7 +56,7 @@ export const Root = forwardRef<HTMLDivElement, CambioRootProps>(
           open: isOpen,
           onOpenChange: (next) => handleChange(next),
           reduceMotion: shouldReduceMotion,
-          motionPreset: resolvedMotionPreset,
+          motion: resolvedMotionPreset,
           motionConfig,
         }}
       >

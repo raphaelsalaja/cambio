@@ -78,7 +78,7 @@ This saves having to create a `<motion.div/>` for each component.
 Cambio includes built-in motion presets that provide consistent animation experiences across your application. You can configure the motion preset at the root level:
 
 ```tsx lineNumbers
-<Cambio.Root motionPreset="snappy">{/* Your Components */}</Cambio.Root>
+<Cambio.Root motion="snappy">{/* Your Components */}</Cambio.Root>
 ```
 
 ### Available Presets
@@ -92,7 +92,7 @@ Cambio includes built-in motion presets that provide consistent animation experi
 
 - Defaults to `smooth` for optimal user experience
 - Automatically switches to `reduced` if the system setting `prefers-reduced-motion: reduce` is detected
-- Can be explicitly overridden by setting `motionPreset` on the root component
+- Can be explicitly overridden by setting `motion` on the root component
 - Respects the `reduceMotion` prop for manual control
 
 # Dismissability

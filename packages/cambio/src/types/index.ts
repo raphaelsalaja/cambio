@@ -8,8 +8,7 @@ import type { MotionDialog } from "../motion";
 export type MotionPreset = "snappy" | "smooth" | "bouncy" | "reduced";
 
 export interface MotionConfig {
-  enter: Transition;
-  exit: Transition;
+  transition: Transition;
 }
 
 export interface CambioContextProps {
@@ -17,7 +16,7 @@ export interface CambioContextProps {
   layoutId: string;
   onOpenChange?: (open: boolean) => void;
   reduceMotion: boolean;
-  motionPreset: MotionPreset;
+  motion: MotionPreset;
   motionConfig: MotionConfig;
 }
 
@@ -26,7 +25,7 @@ export interface CambioRootProps
   layoutId?: string;
   onOpenChange?: (open: boolean) => void;
   reduceMotion?: boolean;
-  motionPreset?: MotionPreset;
+  motion?: MotionPreset;
 }
 
 export interface CambioTriggerProps

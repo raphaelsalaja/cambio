@@ -6,7 +6,7 @@ import styles from "../styles.module.css";
 
 export function Smooth() {
   return (
-    <Cambio.Root motionPreset="smooth">
+    <Cambio.Root motion="smooth">
       <Cambio.Trigger className={styles.trigger}>
         <Image
           fill

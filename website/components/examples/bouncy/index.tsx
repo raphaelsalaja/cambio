@@ -6,7 +6,7 @@ import styles from "../styles.module.css";
 
 export function Bouncy() {
   return (
-    <Cambio.Root motionPreset="bouncy">
+    <Cambio.Root motion="bouncy">
       <Cambio.Trigger className={styles.trigger}>
         <Image
           fill
