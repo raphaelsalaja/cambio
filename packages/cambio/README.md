@@ -83,7 +83,7 @@ Cambio includes built-in motion presets that provide consistent animation experi
 
 ### Available Presets
 
-- **`snappy`** - Fast ease-out animations (~180ms) for quick, responsive interactions
+- **`snappy`** - Fast ease-out animations (~240ms) for quick, responsive interactions
 - **`smooth`** - Default ease-in-out animations (~240ms) for balanced motion
 - **`bouncy`** - Spring animations with overshoot for playful, organic movement
 - **`reduced`** - Minimal motion for accessibility, automatically applied when `prefers-reduced-motion: reduce` is detected
