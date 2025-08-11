@@ -7,7 +7,7 @@ import styles from "../styles.module.css";
 
 export function Dismissible() {
   return (
-    <Cambio.Root dismissible motion="bouncy">
+    <Cambio.Root dismissible>
       <Cambio.Trigger className={styles.trigger}>
         <Image variant="dismissible" />
       </Cambio.Trigger>

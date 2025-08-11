@@ -14,11 +14,21 @@ export const MOTION_PRESETS: Record<MotionPreset, MotionConfig> = {
       ease: [0.19, 1, 0.22, 1],
       duration: 0.24,
     },
+    drag: {
+      stiffness: 600,
+      damping: 40,
+      restDelta: 0.01,
+    },
   },
   smooth: {
     transition: {
       ease: [0.42, 0, 0.58, 1],
       duration: 0.3,
+    },
+    drag: {
+      stiffness: 350,
+      damping: 25,
+      restDelta: 0.01,
     },
   },
   bouncy: {
@@ -28,11 +38,21 @@ export const MOTION_PRESETS: Record<MotionPreset, MotionConfig> = {
       damping: 80,
       mass: 4,
     },
+    drag: {
+      stiffness: 400,
+      damping: 30,
+      restDelta: 0.01,
+    },
   },
   reduced: {
     transition: {
       ease: "linear",
       duration: 0.01,
+    },
+    drag: {
+      stiffness: 1000,
+      damping: 50,
+      restDelta: 0.1,
     },
   },
 };
