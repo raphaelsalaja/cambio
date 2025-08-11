@@ -6,24 +6,30 @@ import {
   useSpring,
   useTransform,
 } from "motion/react";
-import React, { useMemo } from "react";
+import React, { useMemo, useState } from "react";
 import { useCambioContext } from "../../context";
 import { MotionDialog } from "../../motion";
 import type { CambioPopupProps } from "../../types";
+
+// Default drag spring configuration to avoid duplication
+const DEFAULT_DRAG_SPRING_CONFIG = {
+  stiffness: 400,
+  damping: 30,
+  restDelta: 0.01,
+};
 
 export const Popup = React.forwardRef<HTMLDivElement, CambioPopupProps>(
   function Popup({ dismissable, ...props }, ref) {
     const { layoutId, open, onOpenChange, motionConfig } = useCambioContext();
 
+    const [isDragging, setIsDragging] = useState(false);
+
     const dragX = useMotionValue(0);
 
     const dragY = useMotionValue(0);
 
-    const dragSpringConfig = motionConfig.drag || {
-      stiffness: 400,
-      damping: 30,
-      restDelta: 0.01,
-    };
+    // Use drag configuration from motion preset
+    const dragSpringConfig = motionConfig.drag || DEFAULT_DRAG_SPRING_CONFIG;
 
     const springX = useSpring(dragX, dragSpringConfig);
 
@@ -60,6 +66,10 @@ export const Popup = React.forwardRef<HTMLDivElement, CambioPopupProps>(
             velocity: { x: number; y: number };
           },
         ) => {
+          if (!isDragging) {
+            setIsDragging(true);
+          }
+          // Get resistance value at time of drag to avoid dependency issues
           const resistanceValue = resistance.get();
           dragX.set(info.offset.x * resistanceValue);
           dragY.set(info.offset.y * resistanceValue);
@@ -71,6 +81,7 @@ export const Popup = React.forwardRef<HTMLDivElement, CambioPopupProps>(
             velocity: { x: number; y: number };
           },
         ) => {
+          setIsDragging(false);
           const dist = Math.hypot(info.offset.x, info.offset.y);
           const speed = Math.hypot(info.velocity.x, info.velocity.y);
 
@@ -84,7 +95,7 @@ export const Popup = React.forwardRef<HTMLDivElement, CambioPopupProps>(
           }
         },
       };
-    }, [dismissable, onOpenChange, dragX, dragY, resistance]);
+    }, [dismissable, onOpenChange, dragX, dragY, isDragging, resistance]);
 
     const { transition = motionConfig.transition } = props;
 
@@ -105,7 +116,11 @@ export const Popup = React.forwardRef<HTMLDivElement, CambioPopupProps>(
               left: "50%",
               translate: "-50% -50%",
               touchAction: dismissable ? "none" : "auto",
-              cursor: dismissable ? "grab" : "default",
+              cursor: isDragging
+                ? "grabbing"
+                : dismissable
+                  ? "grab"
+                  : "default",
               userSelect: "none",
               WebkitUserSelect: "none",
               scale,
