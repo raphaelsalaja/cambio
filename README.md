@@ -65,7 +65,7 @@ Cambio leverages the power of [Motion](https://motion.dev/) to provide a seamles
 For example you can easily add your own transitions by passing a `transition` prop to any of the components.
 This saves having to create a `<motion.div/>` for each component.
 
-```tsx lineNumbers
+```tsx
 <Cambio.Popup transition={{ type: "spring", bounce: 0.2, duration: 0.4 }} />
 ```
 
@@ -77,7 +77,7 @@ Cambio includes built-in motion presets that provide consistent animation experi
 
 Fast ease-out animations (~240ms) for quick, responsive interactions.
 
-```tsx lineNumbers
+```tsx
 <Cambio.Root motion="snappy" />
 ```
 
@@ -85,7 +85,7 @@ Fast ease-out animations (~240ms) for quick, responsive interactions.
 
 Default ease-in-out animations (~240ms) for balanced motion.
 
-```tsx lineNumbers
+```tsx
 <Cambio.Root motion="smooth" />
 ```
 
@@ -93,7 +93,7 @@ Default ease-in-out animations (~240ms) for balanced motion.
 
 Spring animations with overshoot for playful, organic movement.
 
-```tsx lineNumbers
+```tsx
 <Cambio.Root motion="bouncy" />
 ```
 
@@ -101,13 +101,17 @@ Spring animations with overshoot for playful, organic movement.
 
 Cambio also supports dismissible popups, allowing users to easily close the popup by dragging on the popup. This prop is completely optional, so if you don't need this behavior, you can simply omit it.
 
-```tsx lineNumbers
+```tsx
 <Cambio.Popup dismissable>{/* Your Content */}</Cambio.Popup>
 ```
 
 # Accessibility & Reduced Motion
 
 Cambio respects user accessibility preferences, specifically the `prefers-reduced-motion` media query. By default, Cambio automatically detects and respects this system preference to provide a more accessible experience for users who prefer reduced motion.
+
+```tsx
+<Cambio.Root reduceMotion={true} />
+```
 
 # What Sets Cambio Apart
 
