@@ -102,9 +102,9 @@ Configure different motion presets for different components:
 </Cambio.Root>
 ```
 
-## Component-Level Motion Override
+# Component-Level Motion Override
 
-Override motion for individual components:
+Override motion for individual components. Component-level motion takes the highest priority, followed by motion variants, then global motion settings:
 
 ```tsx lineNumbers
 <Cambio.Root motion="smooth">
@@ -143,34 +143,24 @@ Spring animations with overshoot for playful, organic movement.
 
 # Dismissability
 
-Cambio supports dismissible popups, allowing users to easily close the popup by dragging. You can configure this behavior at the root level or override it per component.
-
-## Root-Level Configuration
-
-Configure dismissible behavior globally:
+Cambio supports dismissible popups, allowing users to easily close the popup by dragging. You can configure this behavior at the root level.
 
 ```tsx lineNumbers
-<Cambio.Root dismissible>
-  <Cambio.Trigger>{/* Your Content */}</Cambio.Trigger>
-  <Cambio.Portal>
-    <Cambio.Backdrop />
-    <Cambio.Popup>{/* Your Content */}</Cambio.Popup>
-  </Cambio.Portal>
-</Cambio.Root>
+<Cambio.Root dismissible />
 ```
 
-## Advanced Configuration
+# Advanced Configuration
 
 Customize dismissal sensitivity:
 
 ```tsx lineNumbers
 <Cambio.Root
   dismissible={{
-    threshold: 120, // Distance threshold in pixels
-    velocity: 600, // Velocity threshold in pixels/second
+    threshold: 120,
+    velocity: 600,
   }}
 >
-  <Cambio.Popup>{/* Your Content */}</Cambio.Popup>
+  <Cambio.Popup />
 </Cambio.Root>
 ```
 

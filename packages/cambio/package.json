@@ -69,7 +69,6 @@
     "./components/root": {},
     "./components/title": {},
     "./components/trigger": {},
-    "./utils": {},
-    "./utils/index-clean": {}
+    "./utils": {}
   }
 }
