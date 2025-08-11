@@ -8,6 +8,7 @@ import type { CambioRootProps } from "../../types";
 import {
   getMotionConfig,
   getReducedMotionState,
+  parseMotionConfig,
   resolveMotionPreset,
 } from "../../utils";
 
@@ -22,6 +23,7 @@ export const Root = forwardRef<HTMLDivElement, CambioRootProps>(
       layoutId = `cambio-dialog-${generatedId}`,
       reduceMotion,
       motion,
+      dismissible,
       ...rest
     } = props;
 
@@ -29,8 +31,17 @@ export const Root = forwardRef<HTMLDivElement, CambioRootProps>(
 
     const isOpen = open ?? openState;
     const shouldReduceMotion = getReducedMotionState(reduceMotion);
-    const resolvedMotion = resolveMotionPreset(motion, shouldReduceMotion);
-    const motionConfig = getMotionConfig(resolvedMotion, shouldReduceMotion);
+
+    // Parse motion configuration into preset and variants
+    const { preset, variants } = parseMotionConfig(motion);
+    const resolvedMotionPreset = resolveMotionPreset(
+      preset,
+      shouldReduceMotion,
+    );
+    const motionConfig = getMotionConfig(
+      resolvedMotionPreset,
+      shouldReduceMotion,
+    );
 
     const handleChange = useCallback(
       (next: boolean, _e?: Event, _reason?: unknown) => {
@@ -50,8 +61,10 @@ export const Root = forwardRef<HTMLDivElement, CambioRootProps>(
           open: isOpen,
           onOpenChange: (next) => handleChange(next),
           reduceMotion: shouldReduceMotion,
-          motion: resolvedMotion,
+          motion: resolvedMotionPreset,
           motionConfig,
+          motionVariants: variants,
+          dismissible,
         }}
       >
         <MotionDialog.Root

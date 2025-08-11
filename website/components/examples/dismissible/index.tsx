@@ -5,16 +5,16 @@ import { Image } from "@/components/image";
 
 import styles from "../styles.module.css";
 
-export function Snappy() {
+export function Dismissible() {
   return (
-    <Cambio.Root motion="snappy">
+    <Cambio.Root dismissible motion="bouncy">
       <Cambio.Trigger className={styles.trigger}>
-        <Image variant="snappy" />
+        <Image variant="dismissible" />
       </Cambio.Trigger>
       <Cambio.Portal>
         <Cambio.Backdrop className={styles.backdrop} />
         <Cambio.Popup className={styles.popup}>
-          <Image variant="snappy" />
+          <Image variant="dismissible" />
         </Cambio.Popup>
       </Cambio.Portal>
     </Cambio.Root>

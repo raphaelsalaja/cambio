@@ -11,6 +11,7 @@
   --pink: oklch(0.7031 0.1612 0.1);
   --purple: oklch(0.7024 0.1619 284.22);
   --red: oklch(0.7025 0.1624 17.61);
+  --leaf: oklch(0.8793 0.0943 126.56);
 
   /* borders */
   --border-primary: oklch(0 0 0 / 5%);

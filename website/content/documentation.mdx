@@ -80,6 +80,54 @@ This saves having to create a `<motion.div/>` for each component.
 
 Cambio includes built-in motion presets that provide consistent animation experiences across your application. You can configure the motion preset at the root level:
 
+```tsx lineNumbers
+<Cambio.Root motion="snappy" />
+```
+
+# Variants
+
+Configure different motion presets for different components:
+
+<center>
+  <Variants />
+</center>
+
+```tsx lineNumbers
+<Cambio.Root
+  motion={{
+    trigger: "snappy",
+    popup: "bouncy",
+    backdrop: "smooth",
+  }}
+>
+  <Cambio.Trigger>{/* Uses snappy motion */}</Cambio.Trigger>
+  <Cambio.Portal>
+    <Cambio.Backdrop />
+    {/* Uses smooth motion */}
+    <Cambio.Popup>{/* Uses bouncy motion */}</Cambio.Popup>
+  </Cambio.Portal>
+</Cambio.Root>
+```
+
+# Overrides
+
+Override motion for individual components. Component-level motion takes the highest priority, followed by motion variants, then global motion settings:
+
+<center>
+  <Overrides />
+</center>
+
+```tsx lineNumbers
+<Cambio.Root motion="smooth">
+  <Cambio.Trigger motion="snappy">{/* Overrides to snappy */}</Cambio.Trigger>
+  <Cambio.Portal>
+    <Cambio.Backdrop motion="reduced" />
+    {/* Overrides to reduced */}
+    <Cambio.Popup motion="bouncy">{/* Overrides to bouncy */}</Cambio.Popup>
+  </Cambio.Portal>
+</Cambio.Root>
+```
+
 # Snappy
 
 Fast ease-out animations (~240ms) for quick, responsive interactions.
@@ -118,19 +166,33 @@ Spring animations with overshoot for playful, organic movement.
 
 # Dismissability
 
-Cambio also supports dismissible popups, allowing users to easily close the popup by dragging on the popup. This prop is completely optional, so if you don't need this behavior, you can simply omit it.
+Cambio supports dismissible popups, allowing users to easily close the popup by dragging. You can configure this behavior at the root level.
 
 <center>
-  <Dismissable />
+  <Dismissible />
 </center>
 
-```tsx
-<Cambio.Popup dismissable />
+```tsx lineNumbers
+<Cambio.Root dismissible />
+```
+
+# Advanced Configuration
+
+Customize dismissal sensitivity:
+
+<center>
+  <DismissableAdvanced />
+</center>
+
+```tsx lineNumbers
+<Cambio.Root dismissible={{ threshold: 120, velocity: 600 }}>
+  <Cambio.Popup />
+</Cambio.Root>
 ```
 
 The drag resistance will also respect the current motion preset. This can also be configured at the root level.
 
-# Accessibility & Reduced Motion
+# Accessibility
 
 Cambio respects user accessibility preferences, specifically the `prefers-reduced-motion` media query. By default, Cambio automatically detects and respects this system preference to provide a more accessible experience for users who prefer reduced motion.
 
@@ -142,7 +204,7 @@ Cambio respects user accessibility preferences, specifically the `prefers-reduce
 <Cambio.Root reduceMotion={true} />
 ```
 
-# What Sets Cambio Apart
+# Why Cambio?
 
 Cambio offers a unique combination of simplicity, accessibility, and powerful animation capabilities that sets it apart from other libraries.
 

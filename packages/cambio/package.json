@@ -36,6 +36,7 @@
     "shared-layout",
     "layout-animation",
     "framer-motion",
+    "motion",
     "spring",
     "transition",
     "accessibility",

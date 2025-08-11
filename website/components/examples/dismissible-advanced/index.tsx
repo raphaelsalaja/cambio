@@ -5,16 +5,16 @@ import { Image } from "@/components/image";
 
 import styles from "../styles.module.css";
 
-export function Snappy() {
+export function DismissableAdvanced() {
   return (
-    <Cambio.Root motion="snappy">
+    <Cambio.Root dismissible={{ threshold: 80, velocity: 400 }}>
       <Cambio.Trigger className={styles.trigger}>
-        <Image variant="snappy" />
+        <Image variant="dismissible-advanced" />
       </Cambio.Trigger>
       <Cambio.Portal>
         <Cambio.Backdrop className={styles.backdrop} />
         <Cambio.Popup className={styles.popup}>
-          <Image variant="snappy" />
+          <Image variant="dismissible-advanced" />
         </Cambio.Popup>
       </Cambio.Portal>
     </Cambio.Root>
