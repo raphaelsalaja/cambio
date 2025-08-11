@@ -39,7 +39,7 @@ export interface CambioContextProps {
   motion: MotionPreset;
   motionConfig: MotionConfig;
   motionVariants?: MotionVariants;
-  dismissable?: DismissableValue;
+  dismissible?: DismissableValue;
 }
 
 export interface CambioRootProps
@@ -48,7 +48,7 @@ export interface CambioRootProps
   onOpenChange?: (open: boolean) => void;
   reduceMotion?: boolean;
   motion?: MotionConfigValue;
-  dismissable?: DismissableValue;
+  dismissible?: DismissableValue;
 }
 
 export interface CambioTriggerProps

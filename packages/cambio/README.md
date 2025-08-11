@@ -147,10 +147,10 @@ Cambio supports dismissible popups, allowing users to easily close the popup by 
 
 ## Root-Level Configuration
 
-Configure dismissable behavior globally:
+Configure dismissible behavior globally:
 
 ```tsx lineNumbers
-<Cambio.Root dismissable>
+<Cambio.Root dismissible>
   <Cambio.Trigger>{/* Your Content */}</Cambio.Trigger>
   <Cambio.Portal>
     <Cambio.Backdrop />
@@ -165,7 +165,7 @@ Customize dismissal sensitivity:
 
 ```tsx lineNumbers
 <Cambio.Root
-  dismissable={{
+  dismissible={{
     threshold: 120, // Distance threshold in pixels
     velocity: 600, // Velocity threshold in pixels/second
   }}

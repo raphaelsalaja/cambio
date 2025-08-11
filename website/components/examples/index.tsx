@@ -1,7 +1,7 @@
 import { Basic } from "./basic";
 import { Bouncy } from "./bouncy";
-import { Dismissable } from "./dismissable";
-import { DismissableAdvanced } from "./dismissable-advanced";
+import { Dismissible } from "./dismissible";
+import { DismissableAdvanced } from "./dismissible-advanced";
 import { Overrides } from "./overrides";
 import { Reduced } from "./reduced";
 import { Smooth } from "./smooth";
@@ -10,7 +10,7 @@ import { Variants } from "./variants";
 
 export const Examples = {
   Basic,
-  Dismissable,
+  Dismissible,
   DismissableAdvanced,
   Reduced,
   Bouncy,

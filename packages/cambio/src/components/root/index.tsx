@@ -23,7 +23,7 @@ export const Root = forwardRef<HTMLDivElement, CambioRootProps>(
       layoutId = `cambio-dialog-${generatedId}`,
       reduceMotion,
       motion,
-      dismissable,
+      dismissible,
       ...rest
     } = props;
 
@@ -64,7 +64,7 @@ export const Root = forwardRef<HTMLDivElement, CambioRootProps>(
           motion: resolvedMotionPreset,
           motionConfig,
           motionVariants: variants,
-          dismissable,
+          dismissible,
         }}
       >
         <MotionDialog.Root

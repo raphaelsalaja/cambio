@@ -4,17 +4,17 @@ import { Cambio } from "cambio";
 import Image from "next/image";
 import styles from "../styles.module.css";
 
-export function Dismissable() {
+export function Dismissible() {
   return (
-    <Cambio.Root dismissable motion="bouncy">
+    <Cambio.Root dismissible motion="bouncy">
       <Cambio.Trigger className={styles.trigger}>
         <Image
           fill
           unoptimized
           loading="eager"
-          alt={"Dismissable Example"}
+          alt={"Dismissible Example"}
           className={styles.image}
-          src={"/dismissable.jpg"}
+          src={"/dismissible.jpg"}
         />
       </Cambio.Trigger>
       <Cambio.Portal>
@@ -24,9 +24,9 @@ export function Dismissable() {
             fill
             unoptimized
             loading="eager"
-            alt={"Dismissable Example"}
+            alt={"Dismissible Example"}
             className={styles.image}
-            src={"/dismissable.jpg"}
+            src={"/dismissible.jpg"}
           />
         </Cambio.Popup>
       </Cambio.Portal>

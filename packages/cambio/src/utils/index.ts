@@ -188,24 +188,24 @@ export function getReducedMotionState(reduceMotion?: boolean): boolean {
 }
 
 /**
- * Resolve dismissable configuration with proper defaults
- * @param dismissable - The dismissable configuration value
- * @returns Resolved dismissable config with defaults
+ * Resolve dismissible configuration with proper defaults
+ * @param dismissible - The dismissible configuration value
+ * @returns Resolved dismissible config with defaults
  */
 export function resolveDismissableConfig(
-  dismissable?: DismissableValue,
+  dismissible?: DismissableValue,
 ): DismissableConfig | null {
-  if (!dismissable) {
+  if (!dismissible) {
     return null;
   }
 
-  if (typeof dismissable === "boolean") {
-    return dismissable ? { threshold: 100, velocity: 500 } : null;
+  if (typeof dismissible === "boolean") {
+    return dismissible ? { threshold: 100, velocity: 500 } : null;
   }
 
   return {
     threshold: 100,
     velocity: 500,
-    ...dismissable,
+    ...dismissible,
   };
 }

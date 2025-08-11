@@ -20,7 +20,7 @@ export const Popup = React.forwardRef<HTMLDivElement, CambioPopupProps>(
       motion: globalMotion,
       motionVariants,
       reduceMotion,
-      dismissable: rootDismissable,
+      dismissible: rootDismissable,
     } = useCambioContext();
 
     // Resolve the motion preset for this component
@@ -35,7 +35,7 @@ export const Popup = React.forwardRef<HTMLDivElement, CambioPopupProps>(
     // Get the motion config for the resolved preset
     const componentMotionConfig = getMotionConfig(resolvedMotion, reduceMotion);
 
-    // Resolve dismissable configuration from root
+    // Resolve dismissible configuration from root
     const dismissableConfig = resolveDismissableConfig(rootDismissable);
 
     const dragging: MotionDraggableProps = useMemo(() => {
