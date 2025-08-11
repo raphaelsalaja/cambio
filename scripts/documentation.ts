@@ -1,3 +1,5 @@
+/** biome-ignore-all lint/style/useNodejsImportProtocol: Not necessary for this script */
+
 import fs from "fs";
 import path from "path";
 

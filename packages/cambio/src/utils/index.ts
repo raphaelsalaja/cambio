@@ -7,11 +7,21 @@ export const MOTION_PRESETS: Record<MotionPreset, MotionConfig> = {
       ease: [0.19, 1, 0.22, 1],
       duration: 0.24,
     },
+    drag: {
+      stiffness: 600,
+      damping: 40,
+      restDelta: 0.01,
+    },
   },
   smooth: {
     transition: {
       ease: [0.42, 0, 0.58, 1],
       duration: 0.3,
+    },
+    drag: {
+      stiffness: 350,
+      damping: 25,
+      restDelta: 0.01,
     },
   },
   bouncy: {
@@ -21,41 +31,69 @@ export const MOTION_PRESETS: Record<MotionPreset, MotionConfig> = {
       damping: 80,
       mass: 4,
     },
+    drag: {
+      stiffness: 400,
+      damping: 30,
+      restDelta: 0.01,
+    },
   },
   reduced: {
     transition: {
       ease: "linear",
       duration: 0.01,
     },
+    drag: {
+      stiffness: 1000,
+      damping: 50,
+      restDelta: 0.1,
+    },
   },
 };
 
 /**
- * Get motion configuration for a given preset
- * @param preset - The motion preset to use
- * @param forceReduced - Whether to force reduced motion regardless of preset
- * @returns MotionConfig with enter and exit transitions
+ * Check if a motion value is a preset string or custom config
+ * @param motion - The motion value to check
+ * @returns boolean indicating if it's a preset
+ */
+function isMotionPreset(
+  motion: MotionPreset | MotionConfig,
+): motion is MotionPreset {
+  return typeof motion === "string" && motion in MOTION_PRESETS;
+}
+
+/**
+ * Get motion configuration for a given preset or return custom config
+ * @param motion - The motion preset or custom config to use
+ * @param forceReduced - Whether to force reduced motion regardless of input
+ * @returns MotionConfig with transition and drag configurations
  */
 export function getMotionConfig(
-  preset: MotionPreset,
+  motion: MotionPreset | MotionConfig,
   forceReduced: boolean = false,
 ): MotionConfig {
   if (forceReduced) {
     return MOTION_PRESETS.reduced;
   }
-  return MOTION_PRESETS[preset];
+
+  // If it's a custom config, return it directly
+  if (!isMotionPreset(motion)) {
+    return motion;
+  }
+
+  // Otherwise, get the preset config
+  return MOTION_PRESETS[motion];
 }
 
 /**
  * Resolve the motion preset based on user preference and system settings
- * @param motion - Override preset or undefined to use default
+ * @param motion - Override preset, custom config, or undefined to use default
  * @param reduceMotion - Whether reduced motion is preferred
- * @returns The resolved motion preset
+ * @returns The resolved motion preset or custom config
  */
 export function resolveMotionPreset(
-  motion?: MotionPreset,
+  motion?: MotionPreset | MotionConfig,
   reduceMotion: boolean = false,
-): MotionPreset {
+): MotionPreset | MotionConfig {
   if (reduceMotion && !motion) {
     return "reduced";
   }

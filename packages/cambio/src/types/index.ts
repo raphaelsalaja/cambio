@@ -9,6 +9,11 @@ export type MotionPreset = "snappy" | "smooth" | "bouncy" | "reduced";
 
 export interface MotionConfig {
   transition: Transition;
+  drag?: {
+    stiffness: number;
+    damping: number;
+    restDelta: number;
+  };
 }
 
 export interface CambioContextProps {
@@ -16,7 +21,7 @@ export interface CambioContextProps {
   layoutId: string;
   onOpenChange?: (open: boolean) => void;
   reduceMotion: boolean;
-  motion: MotionPreset;
+  motion: MotionPreset | MotionConfig;
   motionConfig: MotionConfig;
 }
 
@@ -25,7 +30,7 @@ export interface CambioRootProps
   layoutId?: string;
   onOpenChange?: (open: boolean) => void;
   reduceMotion?: boolean;
-  motion?: MotionPreset;
+  motion?: MotionPreset | MotionConfig;
 }
 
 export interface CambioTriggerProps

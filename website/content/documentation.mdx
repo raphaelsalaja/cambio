@@ -72,7 +72,7 @@ Cambio leverages the power of [Motion](https://motion.dev/) to provide a seamles
 For example you can easily add your own transitions by passing a `transition` prop to any of the components.
 This saves having to create a `<motion.div/>` for each component.
 
-```tsx lineNumbers
+```tsx
 <Cambio.Popup transition={{ type: "spring", bounce: 0.2, duration: 0.4 }} />
 ```
 
@@ -88,7 +88,7 @@ Fast ease-out animations (~240ms) for quick, responsive interactions.
   <Snappy />
 </center>
 
-```tsx lineNumbers
+```tsx
 <Cambio.Root motion="snappy" />
 ```
 
@@ -100,7 +100,7 @@ Default ease-in-out animations (~240ms) for balanced motion.
   <Smooth />
 </center>
 
-```tsx lineNumbers
+```tsx
 <Cambio.Root motion="smooth" />
 ```
 
@@ -112,7 +112,7 @@ Spring animations with overshoot for playful, organic movement.
   <Bouncy />
 </center>
 
-```tsx lineNumbers
+```tsx
 <Cambio.Root motion="bouncy" />
 ```
 
@@ -124,9 +124,11 @@ Cambio also supports dismissible popups, allowing users to easily close the popu
   <Dismissable />
 </center>
 
-```tsx lineNumbers
-<Cambio.Popup dismissable>{/* Your Content */}</Cambio.Popup>
+```tsx
+<Cambio.Popup dismissable />
 ```
+
+The drag resistance will also respect the current motion preset. This can also be configured at the root level.
 
 # Accessibility & Reduced Motion
 
@@ -135,6 +137,10 @@ Cambio respects user accessibility preferences, specifically the `prefers-reduce
 <center>
   <Reduced />
 </center>
+
+```tsx
+<Cambio.Root reduceMotion={true} />
+```
 
 # What Sets Cambio Apart
 
