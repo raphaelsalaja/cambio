@@ -43,7 +43,10 @@ export interface CambioContextProps {
 }
 
 export interface CambioRootProps
-  extends React.ComponentPropsWithoutRef<typeof MotionDialog.Root> {
+  extends Omit<
+    React.ComponentPropsWithoutRef<typeof MotionDialog.Root>,
+    "dismissible"
+  > {
   layoutId?: string;
   onOpenChange?: (open: boolean) => void;
   reduceMotion?: boolean;
