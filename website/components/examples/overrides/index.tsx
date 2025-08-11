@@ -12,8 +12,8 @@ export function Overrides() {
         <Image variant="overrides" />
       </Cambio.Trigger>
       <Cambio.Portal>
-        <Cambio.Backdrop motion="reduced" />
-        <Cambio.Popup motion="bouncy">
+        <Cambio.Backdrop motion="reduced" className={styles.backdrop} />
+        <Cambio.Popup motion="bouncy" className={styles.popup}>
           <Image variant="overrides" />
         </Cambio.Popup>
       </Cambio.Portal>
