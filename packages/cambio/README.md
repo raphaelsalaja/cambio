@@ -39,18 +39,23 @@ For more information, see the [Base UI Documentation](https://base-ui.com/react/
 
 It can be used anywhere in your application as follows.
 
-```tsx lineNumbers
+```tsx
 "use client";
 
 import { Cambio } from "cambio";
 
-export default function Lightbox() {
+export default function MyModal() {
   return (
     <Cambio.Root>
-      <Cambio.Trigger>{/* Your Content */}</Cambio.Trigger>
+      <Cambio.Trigger>{/* Your Trigger Content */}</Cambio.Trigger>
       <Cambio.Portal>
         <Cambio.Backdrop />
-        <Cambio.Popup>{/* Your Content*/}</Cambio.Popup>
+        <Cambio.Popup>
+          <Cambio.Title />
+          <Cambio.Description />
+          <Cambio.Close />
+          {/* Your Additional Content */}
+        </Cambio.Popup>
       </Cambio.Portal>
     </Cambio.Root>
   );
@@ -61,27 +66,37 @@ For complete code examples, refer to the [examples directory](https://github.com
 
 # Motion
 
-Cambio leverages the power of [Motion](https://motion.dev/) to provide a seamless animation experience.
-For example you can easily add your own transitions by passing a `transition` prop to any of the components.
-This saves having to create a `<motion.div/>` for each component.
+Cambio leverages the power of [Motion](https://motion.dev/) to provide a seamless animation experience. All components are built on Motion primitives, giving you fine-grained control over animations without the complexity.
+
+You can easily customize transitions by passing a `transition` prop to any component:
 
 ```tsx
 <Cambio.Popup transition={{ type: "spring", bounce: 0.2, duration: 0.4 }} />
 ```
 
+This eliminates the need to wrap components in `<motion.div />` elements while maintaining full Motion capabilities.
+
 # Presets
 
-Cambio includes built-in motion presets that provide consistent animation experiences across your application. You can configure the motion preset at the root level:
+Cambio includes four built-in motion presets, each optimized for different interaction patterns. You can configure the motion preset globally at the root level.
 
-```tsx lineNumbers
+`snappy` - 240ms ease-out animations for quick, responsive interactions
+
+`smooth` - 300ms ease-in-out animations for balanced, general-purpose motion
+
+`bouncy` - Spring animations with organic movement for playful interfaces
+
+`reduced` - 10ms linear animations for accessibility compliance
+
+```tsx
 <Cambio.Root motion="snappy" />
 ```
 
 # Variants
 
-Configure different motion presets for different components:
+Configure different motion presets for different components when you need granular control over the animation experience. This is useful when you want each component to have its own distinct motion characteristics:
 
-```tsx lineNumbers
+```tsx
 <Cambio.Root
   motion={{
     trigger: "snappy",
@@ -102,7 +117,7 @@ Configure different motion presets for different components:
 
 Override motion for individual components. Component-level motion takes the highest priority, followed by motion variants, then global motion settings:
 
-```tsx lineNumbers
+```tsx
 <Cambio.Root motion="smooth">
   <Cambio.Trigger motion="snappy">{/* Overrides to snappy */}</Cambio.Trigger>
   <Cambio.Portal>
@@ -115,7 +130,7 @@ Override motion for individual components. Component-level motion takes the high
 
 # Snappy
 
-Fast ease-out animations (~240ms) for quick, responsive interactions.
+Fast ease-out animations (240ms) for quick, responsive interactions. Ideal for buttons, toggles, and frequent actions where immediacy is key.
 
 ```tsx
 <Cambio.Root motion="snappy" />
@@ -123,7 +138,7 @@ Fast ease-out animations (~240ms) for quick, responsive interactions.
 
 # Smooth
 
-Default ease-in-out animations (~240ms) for balanced motion.
+Balanced ease-in-out animations (300ms) for general-purpose motion. The default preset that works well for most modal and popup interactions.
 
 ```tsx
 <Cambio.Root motion="smooth" />
@@ -131,7 +146,7 @@ Default ease-in-out animations (~240ms) for balanced motion.
 
 # Bouncy
 
-Spring animations with overshoot for playful, organic movement.
+Spring animations with playful overshoot for engaging, organic movement. Perfect for delightful interactions and creative interfaces.
 
 ```tsx
 <Cambio.Root motion="bouncy" />
@@ -141,7 +156,7 @@ Spring animations with overshoot for playful, organic movement.
 
 Cambio supports dismissible popups, allowing users to easily close the popup by dragging. You can configure this behavior at the root level.
 
-```tsx lineNumbers
+```tsx
 <Cambio.Root dismissible />
 ```
 
@@ -149,13 +164,11 @@ Cambio supports dismissible popups, allowing users to easily close the popup by 
 
 Customize dismissal sensitivity:
 
-```tsx lineNumbers
+```tsx
 <Cambio.Root dismissible={{ threshold: 120, velocity: 600 }}>
   <Cambio.Popup />
 </Cambio.Root>
 ```
-
-The drag resistance will also respect the current motion preset. This can also be configured at the root level.
 
 # Accessibility
 

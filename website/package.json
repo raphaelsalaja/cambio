@@ -16,6 +16,7 @@
     "fumadocs-core": "^15.6.9",
     "fumadocs-docgen": "^2.1.0",
     "fumadocs-mdx": "^11.7.3",
+    "fumadocs-typescript": "^4.0.6",
     "fumadocs-ui": "^15.6.9",
     "motion": "^12.23.12",
     "next": "15.4.5",
