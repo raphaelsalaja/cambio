@@ -28,6 +28,5 @@
   z-index: 100000;
   aspect-ratio: 3 / 2;
   overflow: hidden;
-  background: var(--leaf);
   border-radius: 8px;
 }
