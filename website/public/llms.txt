@@ -8,6 +8,8 @@ By eliminating boilerplate code, it streamlines both implementation and maintena
 Built on [Base UI's](https://base-ui.com/) accessible primitives and [Motion's](https://motion.dev/) powerful animation library,
 Cambio ensures your animations are both performant and inclusive by default.
 
+For the source code, check out the [GitHub](https://github.com/raphaelsalaja/cambio).
+
 # Installation
 
 ```bash
