@@ -10,7 +10,6 @@ import { getComponentMotionPreset, getMotionConfig } from "../../utils";
 export const Backdrop = React.forwardRef<HTMLDivElement, CambioBackdropProps>(
   function Backdrop({ motion: componentMotion, ...props }, ref) {
     const {
-      layoutId,
       open,
       motion: globalMotion,
       motionVariants,
@@ -35,16 +34,19 @@ export const Backdrop = React.forwardRef<HTMLDivElement, CambioBackdropProps>(
     } = props;
 
     return (
-      <AnimatePresence>
+      <AnimatePresence initial={false}>
         {open && (
           <MotionDialog.Backdrop
             {...props}
             ref={ref}
-            key={`cambio-backdrop-${layoutId}`}
             transition={transition}
             initial={initial}
             animate={animate}
             exit={exit}
+            style={{
+              ...props.style,
+              display: "block",
+            }}
           />
         )}
       </AnimatePresence>
