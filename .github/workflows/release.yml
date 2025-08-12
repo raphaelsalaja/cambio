@@ -71,7 +71,7 @@ jobs:
           git push origin "v${{ env.NEW_VERSION }}"
 
       - name: Publish
-        run: pnpm publish --filter=cambio
+        run: pnpm publish --filter=cambio --no-git-checks
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
