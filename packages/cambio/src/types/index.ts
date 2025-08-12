@@ -8,7 +8,7 @@ import type { MotionDialog } from "../motion";
 /**
  * Predefined motion presets that define the animation behavior and timing.
  *
- * - `snappy`: Fast, immediate animations (~200ms) for responsive interactions
+ * - `snappy`: Fast, immediate animations (~240ms) for responsive interactions
  * - `smooth`: Balanced animations (~400ms) for general use cases
  * - `bouncy`: Spring-based animations with elastic bounce effects
  * - `reduced`: Minimal animations for accessibility compliance (respects prefers-reduced-motion)
