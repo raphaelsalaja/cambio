@@ -4,31 +4,29 @@ import React from "react";
 import { useCambioContext } from "../../context";
 import { MotionDialog } from "../../motion";
 import type { CambioTriggerProps } from "../../types";
-import { getComponentMotionPreset, getMotionConfig } from "../../utils";
+
+const TRIGGER_Z_INDEX = 1000;
 
 export const Trigger = React.memo(
   React.forwardRef<HTMLButtonElement, CambioTriggerProps>(function Trigger(
     { motion: componentMotion, ...props },
     ref,
   ) {
-    const {
-      layoutId,
-      motion: globalMotion,
-      motionVariants,
-      reduceMotion,
-    } = useCambioContext();
+    const { open, layoutId } = useCambioContext();
 
-    const resolvedMotion = getComponentMotionPreset(
-      "trigger",
-      componentMotion,
-      globalMotion,
-      motionVariants,
-      reduceMotion,
-    );
+    const [z, setZ] = React.useState<number>(open ? TRIGGER_Z_INDEX : 0);
 
-    const componentMotionConfig = getMotionConfig(resolvedMotion, reduceMotion);
+    React.useEffect(() => {
+      if (open) {
+        setZ(TRIGGER_Z_INDEX);
+      }
+    }, [open]);
 
-    const { transition = componentMotionConfig.transition } = props;
+    const handleLayoutAnimationComplete = React.useCallback(() => {
+      if (!open) {
+        setZ(0);
+      }
+    }, [open]);
 
     return (
       <MotionDialog.Trigger
@@ -36,7 +34,12 @@ export const Trigger = React.memo(
         ref={ref}
         layoutId={layoutId}
         layoutCrossfade={false}
-        transition={transition}
+        onLayoutAnimationComplete={handleLayoutAnimationComplete}
+        style={{
+          position: "relative",
+          zIndex: z,
+          ...props.style,
+        }}
       />
     );
   }),

@@ -1,11 +1,6 @@
 "use client";
 
-import {
-  AnimatePresence,
-  useMotionValue,
-  useSpring,
-  useTransform,
-} from "motion/react";
+import { useMotionValue, useSpring, useTransform } from "motion/react";
 import React, { useMemo, useState } from "react";
 import { useCambioContext } from "../../context";
 import { MotionDialog } from "../../motion";
@@ -141,38 +136,34 @@ export const Popup = React.forwardRef<HTMLDivElement, CambioPopupProps>(
     const { transition = componentMotionConfig.transition } = props;
 
     return (
-      <AnimatePresence>
-        {open && (
-          <MotionDialog.Popup
-            {...props}
-            {...dragConfig}
-            ref={ref}
-            layoutId={layoutId}
-            layoutCrossfade={false}
-            layout
-            transition={transition}
-            style={{
-              position: "fixed",
-              top: "50%",
-              left: "50%",
-              translate: "-50% -50%",
-              touchAction: dismissableConfig ? "none" : "auto",
-              cursor: isDragging
-                ? "grabbing"
-                : dismissableConfig
-                  ? "grab"
-                  : "default",
-              userSelect: "none",
-              WebkitUserSelect: "none",
-              scale,
-              opacity,
-              x: springX,
-              y: springY,
-              ...props.style,
-            }}
-          />
-        )}
-      </AnimatePresence>
+      <MotionDialog.Popup
+        {...props}
+        {...dragConfig}
+        ref={ref}
+        layoutId={layoutId}
+        layoutCrossfade={false}
+        layout
+        transition={transition}
+        style={{
+          position: "fixed",
+          top: "50%",
+          left: "50%",
+          translate: "-50% -50%",
+          touchAction: dismissableConfig ? "none" : "auto",
+          cursor: isDragging
+            ? "grabbing"
+            : dismissableConfig
+              ? "grab"
+              : "default",
+          userSelect: "none",
+          WebkitUserSelect: "none",
+          scale,
+          opacity,
+          x: springX,
+          y: springY,
+          ...props.style,
+        }}
+      />
     );
   },
 );

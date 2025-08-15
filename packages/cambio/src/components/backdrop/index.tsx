@@ -1,6 +1,5 @@
 "use client";
 
-import { AnimatePresence } from "motion/react";
 import React from "react";
 import { useCambioContext } from "../../context";
 import { MotionDialog } from "../../motion";
@@ -34,22 +33,18 @@ export const Backdrop = React.forwardRef<HTMLDivElement, CambioBackdropProps>(
     } = props;
 
     return (
-      <AnimatePresence initial={false}>
-        {open && (
-          <MotionDialog.Backdrop
-            {...props}
-            ref={ref}
-            transition={transition}
-            initial={initial}
-            animate={animate}
-            exit={exit}
-            style={{
-              ...props.style,
-              display: "block",
-            }}
-          />
-        )}
-      </AnimatePresence>
+      <MotionDialog.Backdrop
+        {...props}
+        ref={ref}
+        transition={transition}
+        initial={initial}
+        animate={animate}
+        exit={exit}
+        style={{
+          ...props.style,
+          display: "block",
+        }}
+      />
     );
   },
 );
