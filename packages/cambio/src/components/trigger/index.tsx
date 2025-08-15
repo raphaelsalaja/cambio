@@ -5,6 +5,8 @@ import { useCambioContext } from "../../context";
 import { MotionDialog } from "../../motion";
 import type { CambioTriggerProps } from "../../types";
 
+const TRIGGER_Z_INDEX = 1000;
+
 export const Trigger = React.memo(
   React.forwardRef<HTMLButtonElement, CambioTriggerProps>(function Trigger(
     { motion: componentMotion, ...props },
@@ -12,11 +14,11 @@ export const Trigger = React.memo(
   ) {
     const { open, layoutId } = useCambioContext();
 
-    const [z, setZ] = React.useState<number>(open ? 1000 : 0);
+    const [z, setZ] = React.useState<number>(open ? TRIGGER_Z_INDEX : 0);
 
     React.useEffect(() => {
       if (open) {
-        setZ(1000);
+        setZ(TRIGGER_Z_INDEX);
       }
     }, [open]);
 
@@ -32,7 +34,7 @@ export const Trigger = React.memo(
         ref={ref}
         layoutId={layoutId}
         layoutCrossfade={false}
-        onAnimationComplete={handleAnimationComplete}
+        onLayoutAnimationComplete={handleAnimationComplete}
         style={{
           position: "relative",
           zIndex: z,
