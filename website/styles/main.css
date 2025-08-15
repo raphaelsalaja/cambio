@@ -37,7 +37,6 @@ main {
   width: 640px;
   padding: 128px 0px;
   margin: 0 auto;
-  isolation: isolate;
   transition: width 0.4s ease;
 
   @media (width <= 800px) {

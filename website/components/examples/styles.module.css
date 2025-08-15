@@ -25,7 +25,6 @@
 
 .popup,
 .trigger {
-  z-index: 100000;
   aspect-ratio: 3 / 2;
   overflow: hidden;
   border-radius: 8px;
