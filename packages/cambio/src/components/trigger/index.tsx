@@ -22,7 +22,7 @@ export const Trigger = React.memo(
       }
     }, [open]);
 
-    const handleAnimationComplete = React.useCallback(() => {
+    const handleLayoutAnimationComplete = React.useCallback(() => {
       if (!open) {
         setZ(0);
       }
@@ -34,7 +34,7 @@ export const Trigger = React.memo(
         ref={ref}
         layoutId={layoutId}
         layoutCrossfade={false}
-        onLayoutAnimationComplete={handleAnimationComplete}
+        onLayoutAnimationComplete={handleLayoutAnimationComplete}
         style={{
           position: "relative",
           zIndex: z,
