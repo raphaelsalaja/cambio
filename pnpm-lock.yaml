@@ -42,9 +42,6 @@ importers:
         specifier: ^19.1.1
         version: 19.1.1
     devDependencies:
-      '@tsconfig/next':
-        specifier: ^2.0.3
-        version: 2.0.3
       bunchee:
         specifier: ^6.6.0
         version: 6.6.0(typescript@5.8.3)
@@ -1459,9 +1456,6 @@ packages:
 
   '@ts-morph/common@0.27.0':
     resolution: {integrity: sha512-Wf29UqxWDpc+i61k3oIOzcUfQt79PIT9y/MWfAGlrkjg6lBC1hwDECLXPVJAhWjiGbfBCxZd65F/LIZF3+jeJQ==}
-
-  '@tsconfig/next@2.0.3':
-    resolution: {integrity: sha512-b4aKvmdWnv9aUy+NStUFlefirk3SItW20OJtbi5/ue9oMRaQtUYbN5zsr7OmV3rlx6Gp6h7A82gPoCXhrNGVPQ==}
 
   '@tybys/wasm-util@0.10.0':
     resolution: {integrity: sha512-VyyPYFlOMNylG45GoAe0xDoLwWuowvf92F9kySqzYh8vmYm7D2u4iUJKa1tOUpS70Ku13ASrOkS4ScXFsTaCNQ==}
@@ -3797,8 +3791,6 @@ snapshots:
       fast-glob: 3.3.3
       minimatch: 10.0.3
       path-browserify: 1.0.1
-
-  '@tsconfig/next@2.0.3': {}
 
   '@tybys/wasm-util@0.10.0':
     dependencies:
