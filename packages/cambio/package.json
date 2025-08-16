@@ -1,7 +1,7 @@
 {
   "name": "cambio",
   "description": "A simple shared animation component for React",
-  "version": "1.1.4",
+  "version": "1.1.5",
   "main": "./dist/cjs/index.js",
   "scripts": {
     "dev": "bunchee -w",
@@ -15,7 +15,6 @@
     "react": "^19.1.1"
   },
   "devDependencies": {
-    "@tsconfig/next": "^2.0.3",
     "bunchee": "^6.6.0",
     "typescript": "5.8.3"
   },
