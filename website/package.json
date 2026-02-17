@@ -10,7 +10,7 @@
     "postinstall": "fumadocs-mdx"
   },
   "dependencies": {
-    "@base-ui-components/react": "1.0.0-beta.2",
+    "@base-ui/react": "^1.1.0",
     "@types/mdx": "^2.0.13",
     "cambio": "workspace:*",
     "fumadocs-core": "^15.6.9",
