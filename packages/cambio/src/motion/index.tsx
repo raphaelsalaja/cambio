@@ -1,4 +1,4 @@
-import { Dialog } from "@base-ui-components/react/dialog";
+import { Dialog } from "@base-ui/react/dialog";
 import { motion } from "motion/react";
 
 const Root = motion.create(Dialog.Root);

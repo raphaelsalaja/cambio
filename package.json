@@ -11,15 +11,16 @@
     "publish": "pnpm build && npm publish --workspace=packages/cambio"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.1.2",
+    "@biomejs/biome": "2.1.3",
     "husky": "^9.1.7",
     "prettier": "^3.6.2",
     "tsx": "^4.20.3",
     "turbo": "^2.5.4",
-    "typescript": "5.8.3"
+    "typescript": "5.9.3"
   },
   "engines": {
     "node": ">=18"
   },
-  "packageManager": "pnpm@9.5.0"
+  "packageManager": "pnpm@9.5.0",
+  "private": true
 }
